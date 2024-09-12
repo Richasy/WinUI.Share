@@ -137,7 +137,10 @@ public abstract partial class ImageExBase : LayoutControlBase
     protected override void OnControlUnloaded()
     {
         CanvasImageSource = default;
-        _backgroundBrush.ImageSource = default;
-        _backgroundBrush = null;
+        if (_backgroundBrush is not null)
+        {
+            _backgroundBrush.ImageSource = default;
+            _backgroundBrush = null;
+        }
     }
 }
