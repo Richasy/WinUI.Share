@@ -9,6 +9,7 @@
     <Configurations>Debug;Release;Publish</Configurations>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <Nullable>enable</Nullable>
+    <WindowsSdkPackageVersion>10.0.22621.38</WindowsSdkPackageVersion>
   </PropertyGroup>
   <ItemGroup>
     <None Remove="Base\AppTitleBar.xaml" />
