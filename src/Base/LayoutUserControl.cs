@@ -79,7 +79,7 @@ public abstract class LayoutUserControlBase<TViewModel> : LayoutUserControlBase
     /// <see cref="ViewModel"/> 的依赖属性.
     /// </summary>
     public static readonly DependencyProperty ViewModelProperty =
-        DependencyProperty.Register(nameof(ViewModel), typeof(TViewModel), typeof(LayoutUserControlBase), new PropertyMetadata(default));
+        DependencyProperty.Register(nameof(ViewModel), typeof(TViewModel), typeof(LayoutUserControlBase), new PropertyMetadata(default, new PropertyChangedCallback(OnViewModelChangedInternal)));
 
     /// <summary>
     /// 视图模型.
@@ -88,6 +88,19 @@ public abstract class LayoutUserControlBase<TViewModel> : LayoutUserControlBase
     {
         get => (TViewModel)GetValue(ViewModelProperty);
         set => SetValue(ViewModelProperty, value);
+    }
+
+    /// <summary>
+    /// 当视图模型发生变化时.
+    /// </summary>
+    protected virtual void OnViewModelChanged(TViewModel? oldValue, TViewModel? newValue)
+    {
+    }
+
+    private static void OnViewModelChangedInternal(DependencyObject d, DependencyPropertyChangedEventArgs e)
+    {
+        var instance = d as LayoutUserControlBase<TViewModel>;
+        instance?.OnViewModelChanged((TViewModel?)e.OldValue, (TViewModel?)e.NewValue);
     }
 }
 

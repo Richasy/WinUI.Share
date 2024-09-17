@@ -3,7 +3,6 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:converters="using:Richasy.WinUI.Share.Converters"
-    xmlns:labs="using:CommunityToolkit.Labs.WinUI"
     xmlns:local="using:Richasy.WinUI.Share.Base">
 
     <converters:BoolToVisibilityConverter x:Key="ImageBoolToVisibilityConverter" />
@@ -20,7 +19,7 @@
                         x:Name="Root"
                         CornerRadius="{TemplateBinding CornerRadius}"
                         FlowDirection="LeftToRight">
-                        <labs:Shimmer
+                        <local:Shimmer
                             HorizontalAlignment="Stretch"
                             VerticalAlignment="Stretch"
                             CornerRadius="{TemplateBinding CornerRadius}"

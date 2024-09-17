@@ -17,16 +17,19 @@
     <None Remove="Base\AppTitleBar.xaml" />
     <None Remove="Base\CustomNavigationViewResources.xaml" />
     <None Remove="Base\ImageExBase\ImageExBase.xaml" />
+    <None Remove="Base\SettingsControls\SettingsCard\SettingsCard.xaml" />
+    <None Remove="Base\SettingsControls\SettingsExpander\SettingsExpander.xaml" />
+    <None Remove="Base\Shimmer.xaml" />
     <None Remove="Base\TrimTextBlock.xaml" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="CommunityToolkit.HighPerformance" />
-    <PackageReference Include="CommunityToolkit.Labs.WinUI.Shimmer" />
     <PackageReference Include="CommunityToolkit.Mvvm" />
     <PackageReference Include="CommunityToolkit.WinUI.Animations" />
     <PackageReference Include="CommunityToolkit.WinUI.Extensions" />
     <PackageReference Include="CommunityToolkit.WinUI.Media" />
+    <PackageReference Include="CommunityToolkit.WinUI.Triggers" />
     <PackageReference Include="ComputeSharp.D2D1" />
     <PackageReference Include="ComputeSharp.D2D1.WinUI" />
     <PackageReference Include="FluentIcons.WinUI" />
@@ -45,6 +48,24 @@
 
   <ItemGroup>
     <Folder Include="Base\AppTitleBar\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Base\SettingsControls\SettingsExpander\SettingsExpander.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Base\SettingsControls\SettingsCard\SettingsCard.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Base\Shimmer.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
 
   <ItemGroup>
