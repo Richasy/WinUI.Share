@@ -10,7 +10,7 @@ namespace Richasy.WinUI.Share.Base;
 /// <summary>
 /// 非虚拟化堆栈布局.
 /// </summary>
-public sealed class NonVirtualizingStackLayout : NonVirtualizingLayout
+public sealed partial class NonVirtualizingStackLayout : NonVirtualizingLayout
 {
     /// <summary>
     /// <see cref="Orientation"/> 的依赖属性.

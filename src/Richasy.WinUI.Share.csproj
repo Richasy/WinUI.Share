@@ -10,6 +10,8 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <Nullable>enable</Nullable>
     <WindowsSdkPackageVersion>10.0.22621.38</WindowsSdkPackageVersion>
+    <PublishAot>true</PublishAot>
+    <CsWinRTIIDOptimizerOptOut>true</CsWinRTIIDOptimizerOptOut>
   </PropertyGroup>
   <ItemGroup>
     <None Remove="Base\AppTitleBar.xaml" />
@@ -25,8 +27,10 @@
     <PackageReference Include="CommunityToolkit.WinUI.Animations" />
     <PackageReference Include="CommunityToolkit.WinUI.Extensions" />
     <PackageReference Include="CommunityToolkit.WinUI.Media" />
+    <PackageReference Include="ComputeSharp.D2D1" />
     <PackageReference Include="ComputeSharp.D2D1.WinUI" />
     <PackageReference Include="FluentIcons.WinUI" />
+    <PackageReference Include="Microsoft.Windows.CsWinRT" />
     <PackageReference Include="Microsoft.WindowsAppSDK" />
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" />
     <PackageReference Include="Microsoft.Graphics.Win2D" />

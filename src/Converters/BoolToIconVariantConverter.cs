@@ -8,7 +8,7 @@ namespace Richasy.WinUI.Share.Converters;
 /// <summary>
 /// 图标变体转换器.
 /// </summary>
-public sealed class BoolToIconVariantConverter : IValueConverter
+public sealed partial class BoolToIconVariantConverter : IValueConverter
 {
     /// <inheritdoc/>
     public object Convert(object value, Type targetType, object parameter, string language)

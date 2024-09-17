@@ -30,16 +30,16 @@ public sealed partial class AppNavigationItemViewModel : ViewModelBase
     /// </summary>
     public AppNavigationItemViewModel(
         INavServiceViewModel navService,
-        string pageKey,
+        Type pageType,
         string title,
         FluentIcons.Common.Symbol? symbol = default,
         bool isSelected = false)
     {
-        PageKey = pageKey;
+        PageKey = pageType.FullName;
         Title = title;
         Symbol = symbol ?? FluentIcons.Common.Symbol.Circle;
         IsSelected = isSelected;
-        _navigateAction = parameter => navService.NavigateTo(pageKey, parameter);
+        _navigateAction = parameter => navService.NavigateTo(pageType, parameter);
     }
 
     /// <summary>

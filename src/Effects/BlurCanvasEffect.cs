@@ -16,7 +16,7 @@ namespace Richasy.WinUI.Share.Effects;
 /// <summary>
 /// 图像表面模糊的效果.
 /// </summary>
-public sealed class BlurCanvasEffect : CanvasEffect
+public sealed partial class BlurCanvasEffect : CanvasEffect
 {
     private static readonly CanvasEffectNode<BorderEffect> _borderNode = new();
     private static readonly CanvasEffectNode<ScaleEffect> _scaleNode = new();

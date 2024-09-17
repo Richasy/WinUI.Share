@@ -9,7 +9,7 @@ namespace Richasy.WinUI.Share.Converters;
 /// <summary>
 /// <see cref="bool"/> to <see cref="Visibility"/>.
 /// </summary>
-public sealed class BoolToVisibilityConverter : IValueConverter
+public sealed partial class BoolToVisibilityConverter : IValueConverter
 {
     /// <summary>
     /// Whether to invert the value.

@@ -11,7 +11,7 @@ namespace Richasy.WinUI.Share.Converters;
 /// <remarks>
 /// Returns <c>True</c> when the object is not empty.
 /// </remarks>
-public sealed class ObjectToBoolConverter : IValueConverter
+public sealed partial class ObjectToBoolConverter : IValueConverter
 {
     /// <summary>
     /// Whether to invert the result.

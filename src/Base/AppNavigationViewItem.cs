@@ -9,7 +9,7 @@ namespace Richasy.WinUI.Share.Base;
 /// <summary>
 /// 应用导航视图项.
 /// </summary>
-public sealed class AppNavigationViewItem : NavigationViewItem
+public sealed partial class AppNavigationViewItem : NavigationViewItem
 {
     /// <summary>
     /// <see cref="Symbol"/> 的依赖属性.
@@ -53,7 +53,7 @@ public sealed class AppNavigationViewItem : NavigationViewItem
 /// <summary>
 /// 应用导航视图项显示器.
 /// </summary>
-public sealed class AppNavigationViewItemPresenter : NavigationViewItemPresenter
+public sealed partial class AppNavigationViewItemPresenter : NavigationViewItemPresenter
 {
     /// <summary>
     /// <see cref="Symbol"/> 的依赖属性.

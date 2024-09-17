@@ -9,7 +9,7 @@ namespace Richasy.WinUI.Share.Converters;
 /// <summary>
 /// Object to visibility converter. Returns Collapsed when the object is empty.
 /// </summary>
-public sealed class ObjectToVisibilityConverter : IValueConverter
+public sealed partial class ObjectToVisibilityConverter : IValueConverter
 {
     /// <summary>
     /// Whether to invert the result.
