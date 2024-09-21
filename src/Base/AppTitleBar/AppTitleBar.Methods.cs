@@ -104,6 +104,22 @@ public sealed partial class AppTitleBar
             var titleBar = appWindow.TitleBar;
             titleBar.ButtonBackgroundColor = Colors.Transparent;
             titleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
+            if (ActualTheme != ElementTheme.Default)
+            {
+                titleBar.ButtonHoverBackgroundColor = ActualTheme == ElementTheme.Light ? Colors.LightGray : Colors.Black;
+                titleBar.ButtonForegroundColor = ActualTheme == ElementTheme.Light ? Colors.Black : Colors.White;
+                titleBar.ButtonHoverForegroundColor = ActualTheme == ElementTheme.Light ? Colors.Black : Colors.White;
+                titleBar.ButtonPressedForegroundColor = ActualTheme == ElementTheme.Light ? Colors.Black : Colors.White;
+                titleBar.ButtonInactiveForegroundColor = ActualTheme == ElementTheme.Light ? Colors.Gray : Colors.LightGray;
+            }
+            else
+            {
+                titleBar.ButtonHoverBackgroundColor = default;
+                titleBar.ButtonInactiveForegroundColor = default;
+                titleBar.ButtonForegroundColor = default;
+                titleBar.ButtonHoverForegroundColor = default;
+                titleBar.ButtonPressedForegroundColor = default;
+            }
         }
     }
 
