@@ -93,16 +93,9 @@
                                 ToolTipService.ToolTip="Navigation"
                                 Visibility="Collapsed" />
 
-                            <ContentPresenter
-                                x:Name="PART_HeaderContentPresenter"
-                                Grid.Column="2"
-                                x:Load="False"
-                                Content="{TemplateBinding Header}"
-                                Visibility="Collapsed" />
-
                             <Viewbox
                                 x:Name="PART_Icon"
-                                Grid.Column="3"
+                                Grid.Column="2"
                                 MaxWidth="20"
                                 MaxHeight="20"
                                 Margin="16,0,0,0"
@@ -113,7 +106,7 @@
 
                             <TextBlock
                                 x:Name="PART_TitleText"
-                                Grid.Column="4"
+                                Grid.Column="3"
                                 MinWidth="48"
                                 Margin="16,0,8,0"
                                 HorizontalAlignment="Left"
@@ -128,7 +121,7 @@
 
                             <TextBlock
                                 x:Name="PART_SubtitleText"
-                                Grid.Column="5"
+                                Grid.Column="4"
                                 MinWidth="48"
                                 Margin="0,0,16,0"
                                 HorizontalAlignment="Left"
@@ -140,6 +133,14 @@
                                 TextTrimming="CharacterEllipsis"
                                 TextWrapping="NoWrap"
                                 Visibility="Collapsed" />
+
+                            <ContentPresenter
+                                x:Name="PART_HeaderContentPresenter"
+                                Grid.Column="5"
+                                x:Load="False"
+                                Content="{TemplateBinding Header}"
+                                Visibility="Collapsed" />
+
 
                             <Grid
                                 x:Name="PART_ContentPresenterGrid"
