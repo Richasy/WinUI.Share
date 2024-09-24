@@ -87,6 +87,7 @@
 
     <animations:ImplicitAnimationSet x:Key="MainNavIconImplicitOffsetAnimation">
         <animations:OffsetAnimation Duration="0:0:0.4" />
+        <animations:OpacityAnimation Duration="0:0:0.2" />
     </animations:ImplicitAnimationSet>
 
     <Style x:Key="MainNavigationViewStyle" TargetType="NavigationView">
@@ -607,13 +608,25 @@
                                 </Grid.RowDefinitions>
 
                                 <ic:SymbolIcon
-                                    x:Name="Icon"
+                                    x:Name="DeselectedIcon"
                                     Grid.Row="1"
                                     Margin="{ThemeResource NavigationViewItemOnLeftIconBoxMargin}"
                                     animations:Implicit.Animations="{StaticResource MainNavIconImplicitOffsetAnimation}"
                                     FontSize="20"
                                     Foreground="{ThemeResource MainNavIconForegroundBrush}"
                                     IconVariant="Regular"
+                                    Opacity="1"
+                                    Symbol="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Symbol}" />
+
+                                <ic:SymbolIcon
+                                    x:Name="SelectedIcon"
+                                    Grid.Row="1"
+                                    Margin="{ThemeResource NavigationViewItemOnLeftIconBoxMargin}"
+                                    animations:Implicit.Animations="{StaticResource MainNavIconImplicitOffsetAnimation}"
+                                    FontSize="20"
+                                    Foreground="{ThemeResource MainNavIconForegroundBrush}"
+                                    IconVariant="Filled"
+                                    Opacity="0"
                                     Symbol="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Symbol}" />
 
                                 <Viewbox Grid.Row="2" StretchDirection="DownOnly">
@@ -635,38 +648,46 @@
                                 <VisualState x:Name="PointerOver">
                                     <VisualState.Setters>
                                         <Setter Target="Backplate.Background" Value="{ThemeResource MainNavViewItemBackgroundPointerOver}" />
-                                        <Setter Target="Icon.Foreground" Value="{ThemeResource MainNavViewItemForegroundPointerOver}" />
+                                        <Setter Target="DeselectedIcon.Foreground" Value="{ThemeResource MainNavViewItemForegroundPointerOver}" />
+                                        <Setter Target="SelectedIcon.Foreground" Value="{ThemeResource MainNavViewItemForegroundPointerOver}" />
                                         <Setter Target="ContentPresenter.Foreground" Value="{ThemeResource MainNavViewItemForegroundPointerOver}" />
                                     </VisualState.Setters>
                                 </VisualState>
                                 <VisualState x:Name="Pressed">
                                     <VisualState.Setters>
                                         <Setter Target="Backplate.Background" Value="{ThemeResource MainNavViewItemBackgroundPressed}" />
-                                        <Setter Target="Icon.Foreground" Value="{ThemeResource MainNavViewItemForegroundPressed}" />
+                                        <Setter Target="DeselectedIcon.Foreground" Value="{ThemeResource MainNavViewItemForegroundPressed}" />
+                                        <Setter Target="SelectedIcon.Foreground" Value="{ThemeResource MainNavViewItemForegroundPressed}" />
                                         <Setter Target="ContentPresenter.Foreground" Value="{ThemeResource MainNavViewItemForegroundPressed}" />
                                     </VisualState.Setters>
                                 </VisualState>
                                 <VisualState x:Name="Selected">
                                     <VisualState.Setters>
                                         <Setter Target="Backplate.Background" Value="{ThemeResource MainNavViewItemBackgroundSelected}" />
-                                        <Setter Target="Icon.IconVariant" Value="Filled" />
-                                        <Setter Target="Icon.Foreground" Value="{ThemeResource MainNavViewItemForegroundSelected}" />
+                                        <Setter Target="DeselectedIcon.Opacity" Value="0" />
+                                        <Setter Target="DeselectedIcon.Foreground" Value="{ThemeResource MainNavViewItemForegroundSelected}" />
+                                        <Setter Target="SelectedIcon.Opacity" Value="1" />
+                                        <Setter Target="SelectedIcon.Foreground" Value="{ThemeResource MainNavViewItemForegroundSelected}" />
                                         <Setter Target="ContentPresenter.Visibility" Value="Collapsed" />
                                     </VisualState.Setters>
                                 </VisualState>
                                 <VisualState x:Name="PointerOverSelected">
                                     <VisualState.Setters>
                                         <Setter Target="Backplate.Background" Value="{ThemeResource MainNavViewItemBackgroundSelectedPointerOver}" />
-                                        <Setter Target="Icon.IconVariant" Value="Filled" />
-                                        <Setter Target="Icon.Foreground" Value="{ThemeResource MainNavViewItemForegroundSelectedPointerOver}" />
+                                        <Setter Target="DeselectedIcon.Opacity" Value="0" />
+                                        <Setter Target="DeselectedIcon.Foreground" Value="{ThemeResource MainNavViewItemForegroundSelectedPointerOver}" />
+                                        <Setter Target="SelectedIcon.Opacity" Value="1" />
+                                        <Setter Target="SelectedIcon.Foreground" Value="{ThemeResource MainNavViewItemForegroundSelectedPointerOver}" />
                                         <Setter Target="ContentPresenter.Visibility" Value="Collapsed" />
                                     </VisualState.Setters>
                                 </VisualState>
                                 <VisualState x:Name="PressedSelected">
                                     <VisualState.Setters>
                                         <Setter Target="Backplate.Background" Value="{ThemeResource MainNavViewItemBackgroundSelectedPressed}" />
-                                        <Setter Target="Icon.IconVariant" Value="Filled" />
-                                        <Setter Target="Icon.Foreground" Value="{ThemeResource MainNavViewItemForegroundSelectedPressed}" />
+                                        <Setter Target="DeselectedIcon.Opacity" Value="0" />
+                                        <Setter Target="DeselectedIcon.Foreground" Value="{ThemeResource MainNavViewItemForegroundSelectedPressed}" />
+                                        <Setter Target="SelectedIcon.Opacity" Value="1" />
+                                        <Setter Target="SelectedIcon.Foreground" Value="{ThemeResource MainNavViewItemForegroundSelectedPressed}" />
                                         <Setter Target="ContentPresenter.Visibility" Value="Collapsed" />
                                     </VisualState.Setters>
                                 </VisualState>
