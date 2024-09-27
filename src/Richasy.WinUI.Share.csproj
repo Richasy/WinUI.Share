@@ -21,6 +21,7 @@
     <None Remove="Base\SettingsControls\SettingsCard\SettingsCard.xaml" />
     <None Remove="Base\SettingsControls\SettingsExpander\SettingsExpander.xaml" />
     <None Remove="Base\Shimmer.xaml" />
+    <None Remove="Base\SideSplitButton.xaml" />
     <None Remove="Base\TrimTextBlock.xaml" />
   </ItemGroup>
 
@@ -49,6 +50,12 @@
 
   <ItemGroup>
     <Folder Include="Base\AppTitleBar\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Base\SideSplitButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
 
   <ItemGroup>
