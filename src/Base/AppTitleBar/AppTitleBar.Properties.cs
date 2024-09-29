@@ -71,6 +71,12 @@ public sealed partial class AppTitleBar
         DependencyProperty.Register(nameof(TemplateSettings), typeof(AppTitleBarTemplateSettings), typeof(AppTitleBar), new PropertyMetadata(default));
 
     /// <summary>
+    /// <see cref="BackIcon"/> 的依赖属性.
+    /// </summary>
+    public static readonly DependencyProperty BackIconProperty =
+        DependencyProperty.Register(nameof(BackIcon), typeof(FluentIcons.Common.Symbol), typeof(AppTitleBar), new PropertyMetadata(FluentIcons.Common.Symbol.ArrowLeft));
+
+    /// <summary>
     /// 头部内容.
     /// </summary>
     public object Header
@@ -158,5 +164,14 @@ public sealed partial class AppTitleBar
     {
         get => (AppTitleBarTemplateSettings)GetValue(TemplateSettingsProperty);
         set => SetValue(TemplateSettingsProperty, value);
+    }
+
+    /// <summary>
+    /// 后退按钮图标.
+    /// </summary>
+    public FluentIcons.Common.Symbol BackIcon
+    {
+        get => (FluentIcons.Common.Symbol)GetValue(BackIconProperty);
+        set => SetValue(BackIconProperty, value);
     }
 }

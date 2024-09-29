@@ -83,7 +83,13 @@
                                 Grid.Column="0"
                                 Style="{StaticResource TitleBarBackButtonStyle}"
                                 ToolTipService.ToolTip="Back"
-                                Visibility="Collapsed" />
+                                Visibility="Collapsed">
+                                <ic:SymbolIcon
+                                    x:Name="Content"
+                                    FontSize="14"
+                                    MirroredWhenRightToLeft="True"
+                                    Symbol="{TemplateBinding BackIcon}" />
+                            </Button>
 
                             <Button
                                 x:Name="PART_PaneToggleButton"
@@ -330,11 +336,10 @@
                         x:Name="RootGrid"
                         Background="{TemplateBinding Background}"
                         CornerRadius="{TemplateBinding CornerRadius}">
-                        <ic:SymbolIcon
+                        <ContentPresenter
                             x:Name="Content"
-                            FontSize="{TemplateBinding FontSize}"
-                            MirroredWhenRightToLeft="True"
-                            Symbol="ArrowLeft" />
+                            Content="{TemplateBinding Content}"
+                            FontSize="{TemplateBinding FontSize}" />
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CommonStates">
                                 <VisualState x:Name="Normal" />
