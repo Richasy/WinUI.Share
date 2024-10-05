@@ -17,12 +17,16 @@
   <ItemGroup>
     <None Remove="Base\AppTitleBar.xaml" />
     <None Remove="Base\CustomNavigationViewResources.xaml" />
+    <None Remove="Base\IconTextBlock.xaml" />
     <None Remove="Base\ImageExBase\ImageExBase.xaml" />
     <None Remove="Base\SettingsControls\SettingsCard\SettingsCard.xaml" />
     <None Remove="Base\SettingsControls\SettingsExpander\SettingsExpander.xaml" />
     <None Remove="Base\Shimmer.xaml" />
     <None Remove="Base\SideSplitButton.xaml" />
+    <None Remove="Base\StatusTip.xaml" />
+    <None Remove="Base\TipPopup.xaml" />
     <None Remove="Base\TrimTextBlock.xaml" />
+    <None Remove="EmptyHolder.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -50,6 +54,30 @@
 
   <ItemGroup>
     <Folder Include="Base\AppTitleBar\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="EmptyHolder.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Base\IconTextBlock.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Base\TipPopup.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Base\StatusTip.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
 
   <ItemGroup>
