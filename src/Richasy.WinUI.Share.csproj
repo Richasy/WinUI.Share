@@ -16,6 +16,7 @@
   </PropertyGroup>
   <ItemGroup>
     <None Remove="Base\AppTitleBar.xaml" />
+    <None Remove="Base\ColumnSplitter.xaml" />
     <None Remove="Base\CustomNavigationViewResources.xaml" />
     <None Remove="Base\IconTextBlock.xaml" />
     <None Remove="Base\ImageExBase\ImageExBase.xaml" />
@@ -26,6 +27,7 @@
     <None Remove="Base\StatusTip.xaml" />
     <None Remove="Base\TipPopup.xaml" />
     <None Remove="Base\TrimTextBlock.xaml" />
+    <None Remove="Base\VisibilityToggleButton.xaml" />
     <None Remove="EmptyHolder.xaml" />
   </ItemGroup>
 
@@ -33,6 +35,7 @@
     <PackageReference Include="CommunityToolkit.HighPerformance" />
     <PackageReference Include="CommunityToolkit.Mvvm" />
     <PackageReference Include="CommunityToolkit.WinUI.Animations" />
+    <PackageReference Include="CommunityToolkit.WinUI.Controls.Sizers" />
     <PackageReference Include="CommunityToolkit.WinUI.Extensions" />
     <PackageReference Include="CommunityToolkit.WinUI.Media" />
     <PackageReference Include="CommunityToolkit.WinUI.Triggers" />
@@ -54,6 +57,18 @@
 
   <ItemGroup>
     <Folder Include="Base\AppTitleBar\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Base\VisibilityToggleButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Base\ColumnSplitter.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
 
   <ItemGroup>
