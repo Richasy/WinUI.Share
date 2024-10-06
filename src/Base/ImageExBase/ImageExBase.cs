@@ -2,6 +2,7 @@
 
 using System;
 using Microsoft.Graphics.Canvas;
+using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
 using Windows.Foundation;
@@ -24,10 +25,7 @@ public abstract partial class ImageExBase : LayoutControlBase
     /// <summary>
     /// Initializes a new instance of the <see cref="ImageExBase"/> class.
     /// </summary>
-    protected ImageExBase()
-    {
-        DefaultStyleKey = typeof(ImageExBase);
-    }
+    protected ImageExBase() => DefaultStyleKey = typeof(ImageExBase);
 
     /// <summary>
     /// 图片已加载.
@@ -127,6 +125,7 @@ public abstract partial class ImageExBase : LayoutControlBase
     protected override async void OnControlLoaded()
     {
         // 理论上这里要考虑 DeviceLost 的情况，但是这里暂时不处理。
+        ActualThemeChanged += OnActualThemeChangedAsync;
         if (_backgroundBrush?.ImageSource is null)
         {
             await RedrawAsync();
@@ -136,11 +135,18 @@ public abstract partial class ImageExBase : LayoutControlBase
     /// <inheritdoc/>
     protected override void OnControlUnloaded()
     {
+        ActualThemeChanged -= OnActualThemeChangedAsync;
         CanvasImageSource = default;
         if (_backgroundBrush is not null)
         {
             _backgroundBrush.ImageSource = default;
             _backgroundBrush = null;
         }
+    }
+
+    private async void OnActualThemeChangedAsync(FrameworkElement sender, object args)
+    {
+        _lastUri = default;
+        await RedrawAsync();
     }
 }

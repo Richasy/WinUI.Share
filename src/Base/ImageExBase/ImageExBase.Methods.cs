@@ -8,6 +8,7 @@ using CommunityToolkit.HighPerformance;
 using CommunityToolkit.HighPerformance.Buffers;
 using Microsoft.Graphics.Canvas;
 using Microsoft.UI.Xaml;
+using Windows.Storage;
 
 namespace Richasy.WinUI.Share.Base;
 
@@ -123,21 +124,32 @@ public abstract partial class ImageExBase
     private async Task<CanvasBitmap?> FetchImageAsync()
     {
         var requestUri = _lastUri;
-        var initialCapacity = 32 * 1024;
-        using var bufferWriter = new ArrayPoolBufferWriter<byte>(initialCapacity);
-        using var imageStream = await _httpClient.GetInputStreamAsync(_lastUri);
-        using var streamForRead = imageStream.AsStreamForRead();
-        using var streamForWrite = IBufferWriterExtensions.AsStream(bufferWriter);
-        await streamForRead.CopyToAsync(streamForWrite);
-        if (_lastUri != requestUri)
+        CanvasBitmap? canvasBitmap;
+
+        // 区分本地链接和网络链接.
+        if (_lastUri.IsFile)
         {
-            return default;
+            var file = await StorageFile.GetFileFromPathAsync(requestUri.LocalPath);
+            using var stream = await file.OpenReadAsync();
+            canvasBitmap = await CanvasBitmap.LoadAsync(CanvasDevice.GetSharedDevice(), stream).AsTask();
         }
+        else
+        {
+            var initialCapacity = 32 * 1024;
+            using var bufferWriter = new ArrayPoolBufferWriter<byte>(initialCapacity);
+            using var imageStream = await _httpClient.GetInputStreamAsync(_lastUri);
+            using var streamForRead = imageStream.AsStreamForRead();
+            using var streamForWrite = IBufferWriterExtensions.AsStream(bufferWriter);
+            await streamForRead.CopyToAsync(streamForWrite);
+            if (_lastUri != requestUri)
+            {
+                return default;
+            }
 
-        using var memoryStream = bufferWriter.WrittenMemory.AsStream();
-        using var randomStream = memoryStream.AsRandomAccessStream();
-
-        var canvasBitmap = await CanvasBitmap.LoadAsync(CanvasDevice.GetSharedDevice(), randomStream).AsTask();
+            using var memoryStream = bufferWriter.WrittenMemory.AsStream();
+            using var randomStream = memoryStream.AsRandomAccessStream();
+            canvasBitmap = await CanvasBitmap.LoadAsync(CanvasDevice.GetSharedDevice(), randomStream).AsTask();
+        }
 
         if (_lastUri != requestUri)
         {
