@@ -47,6 +47,7 @@ public abstract partial class ImageExBase
     {
         if (!IsLoaded || _lastUri is null || !TryInitialize())
         {
+            IsImageLoading = false;
             return;
         }
 
@@ -64,6 +65,7 @@ public abstract partial class ImageExBase
 
         if (bitmap is null)
         {
+            IsImageLoading = false;
             return;
         }
 
