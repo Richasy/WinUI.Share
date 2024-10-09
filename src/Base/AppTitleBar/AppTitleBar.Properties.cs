@@ -77,6 +77,12 @@ public sealed partial class AppTitleBar
         DependencyProperty.Register(nameof(BackIcon), typeof(FluentIcons.Common.Symbol), typeof(AppTitleBar), new PropertyMetadata(FluentIcons.Common.Symbol.ArrowLeft));
 
     /// <summary>
+    /// <see cref="TitleMaxWidth"/> 的依赖属性.
+    /// </summary>
+    public static readonly DependencyProperty TitleMaxWidthProperty =
+        DependencyProperty.Register(nameof(TitleMaxWidth), typeof(double), typeof(AppTitleBar), new PropertyMetadata(999));
+
+    /// <summary>
     /// 头部内容.
     /// </summary>
     public object Header
@@ -173,5 +179,14 @@ public sealed partial class AppTitleBar
     {
         get => (FluentIcons.Common.Symbol)GetValue(BackIconProperty);
         set => SetValue(BackIconProperty, value);
+    }
+
+    /// <summary>
+    /// 标题最大宽度.
+    /// </summary>
+    public double TitleMaxWidth
+    {
+        get => (double)GetValue(TitleMaxWidthProperty);
+        set => SetValue(TitleMaxWidthProperty, value);
     }
 }

@@ -110,19 +110,19 @@
                                 Child="{TemplateBinding IconElement}"
                                 Visibility="Collapsed" />
 
-                            <TextBlock
+                            <local:TrimTextBlock
                                 x:Name="PART_TitleText"
                                 Grid.Column="3"
                                 MinWidth="48"
-                                Margin="16,0,8,0"
+                                MaxWidth="{TemplateBinding TitleMaxWidth}"
+                                Margin="12,0,8,0"
                                 HorizontalAlignment="Left"
                                 VerticalAlignment="Center"
                                 x:Load="False"
+                                FontSize="12"
                                 Foreground="{ThemeResource TitleBarForegroundBrush}"
-                                Style="{StaticResource CaptionTextBlockStyle}"
+                                MaxLines="1"
                                 Text="{TemplateBinding Title}"
-                                TextTrimming="CharacterEllipsis"
-                                TextWrapping="NoWrap"
                                 Visibility="Collapsed" />
 
                             <TextBlock
