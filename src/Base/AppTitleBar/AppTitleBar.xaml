@@ -147,7 +147,6 @@
                                 Content="{TemplateBinding Header}"
                                 Visibility="Collapsed" />
 
-
                             <Grid
                                 x:Name="PART_ContentPresenterGrid"
                                 Grid.Column="6"
@@ -165,6 +164,19 @@
                                 x:Load="False"
                                 Content="{TemplateBinding Footer}"
                                 Visibility="Collapsed" />
+                        </Grid>
+
+                        <Grid
+                            x:Name="PART_CenterPresenterGrid"
+                            Grid.ColumnSpan="3"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            x:Load="False"
+                            Visibility="Collapsed">
+                            <ContentPresenter
+                                x:Name="PART_CenterPresenter"
+                                HorizontalAlignment="Stretch"
+                                Content="{TemplateBinding CenterContent}" />
                         </Grid>
                         <VisualStateManager.VisualStateGroups>
 
@@ -269,6 +281,21 @@
                                     <VisualState.Setters>
                                         <Setter Target="PART_ContentPresenterGrid.Visibility" Value="Visible" />
                                         <Setter Target="PART_ContentPresenterGrid.Opacity" Value="{ThemeResource TitleBarDeactivatedOpacity}" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                            </VisualStateGroup>
+
+                            <VisualStateGroup x:Name="CenterContentGroup">
+                                <VisualState x:Name="CenterContentCollapsed" />
+                                <VisualState x:Name="CenterContentVisible">
+                                    <VisualState.Setters>
+                                        <Setter Target="PART_CenterPresenterGrid.Visibility" Value="Visible" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                                <VisualState x:Name="CenterContentDeactivated">
+                                    <VisualState.Setters>
+                                        <Setter Target="PART_CenterPresenterGrid.Visibility" Value="Visible" />
+                                        <Setter Target="PART_CenterPresenterGrid.Opacity" Value="{ThemeResource TitleBarDeactivatedOpacity}" />
                                     </VisualState.Setters>
                                 </VisualState>
                             </VisualStateGroup>

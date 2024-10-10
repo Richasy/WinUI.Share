@@ -83,6 +83,12 @@ public sealed partial class AppTitleBar
         DependencyProperty.Register(nameof(TitleMaxWidth), typeof(double), typeof(AppTitleBar), new PropertyMetadata(999));
 
     /// <summary>
+    /// <see cref="CenterContent"/> 的依赖属性.
+    /// </summary>
+    public static readonly DependencyProperty CenterContentProperty =
+        DependencyProperty.Register(nameof(CenterContent), typeof(object), typeof(AppTitleBar), new PropertyMetadata(default, new PropertyChangedCallback(OnCenterContentChanged)));
+
+    /// <summary>
     /// 头部内容.
     /// </summary>
     public object Header
@@ -125,6 +131,15 @@ public sealed partial class AppTitleBar
     {
         get => (object)GetValue(ContentProperty);
         set => SetValue(ContentProperty, value);
+    }
+
+    /// <summary>
+    /// 标题栏居中的内容.
+    /// </summary>
+    public object CenterContent
+    {
+        get => (object)GetValue(CenterContentProperty);
+        set => SetValue(CenterContentProperty, value);
     }
 
     /// <summary>

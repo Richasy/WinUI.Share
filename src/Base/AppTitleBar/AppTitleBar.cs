@@ -60,6 +60,7 @@ public sealed partial class AppTitleBar : Control
         UpdateSubtitle();
         UpdateHeader();
         UpdateContent();
+        UpdateCenterContent();
         UpdateFooter();
         UpdateInteractableElementsList();
     }
@@ -110,6 +111,12 @@ public sealed partial class AppTitleBar : Control
     {
         var instance = d as AppTitleBar;
         instance?.UpdateContent();
+    }
+
+    private static void OnCenterContentChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+    {
+        var instance = d as AppTitleBar;
+        instance?.UpdateCenterContent();
     }
 
     private static void OnFooterChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
