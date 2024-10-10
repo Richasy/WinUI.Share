@@ -20,6 +20,7 @@
     <None Remove="Base\CustomNavigationViewResources.xaml" />
     <None Remove="Base\IconTextBlock.xaml" />
     <None Remove="Base\ImageExBase\ImageExBase.xaml" />
+    <None Remove="Base\LoadingWidget.xaml" />
     <None Remove="Base\SettingsControls\SettingsCard\SettingsCard.xaml" />
     <None Remove="Base\SettingsControls\SettingsExpander\SettingsExpander.xaml" />
     <None Remove="Base\Shimmer.xaml" />
@@ -57,6 +58,12 @@
 
   <ItemGroup>
     <Folder Include="Base\AppTitleBar\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Base\LoadingWidget.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
 
   <ItemGroup>
