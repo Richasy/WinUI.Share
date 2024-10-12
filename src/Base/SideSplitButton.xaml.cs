@@ -13,7 +13,7 @@ public sealed partial class SideSplitButton : LayoutUserControlBase
     /// <see cref="IsHide"/> 依赖属性.
     /// </summary>
     public static readonly DependencyProperty IsHideProperty =
-        DependencyProperty.Register(nameof(IsHide), typeof(bool), typeof(SideSplitButton), new PropertyMetadata(default));
+        DependencyProperty.Register(nameof(IsHide), typeof(bool), typeof(SideSplitButton), new PropertyMetadata(default, new PropertyChangedCallback(OnIsHideChanged)));
 
     /// <summary>
     /// <see cref="IsInvertDirection"/> 依赖属性.
@@ -48,6 +48,15 @@ public sealed partial class SideSplitButton : LayoutUserControlBase
     protected override void OnControlLoaded()
         => SymbolControl.Symbol = GetSymbol();
 
+    private static void OnIsHideChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+    {
+        var instance = d as SideSplitButton;
+        if (instance != null)
+        {
+            instance.SymbolControl.Symbol = instance.GetSymbol();
+        }
+    }
+
     private FluentIcons.Common.Symbol GetSymbol()
     {
         return IsHide
@@ -56,8 +65,5 @@ public sealed partial class SideSplitButton : LayoutUserControlBase
     }
 
     private void OnBtnClick(object sender, RoutedEventArgs e)
-    {
-        IsHide = !IsHide;
-        SymbolControl.Symbol = GetSymbol();
-    }
+        => IsHide = !IsHide;
 }
