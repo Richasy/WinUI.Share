@@ -27,7 +27,22 @@ public sealed partial class ObjectToBoolConverter : IValueConverter
         var result = false;
         if (value != null)
         {
-            result = value is string str ? !string.IsNullOrEmpty(str) : value is not bool b || b;
+            if (value is string str)
+            {
+                result = !string.IsNullOrEmpty(str);
+            }
+            else if (value is int numInt)
+            {
+                result = numInt > 0;
+            }
+            else if (value is double numDouble)
+            {
+                result = numDouble > 0;
+            }
+            else
+            {
+                result = value is not bool b || b;
+            }
         }
 
         if (IsReverse)

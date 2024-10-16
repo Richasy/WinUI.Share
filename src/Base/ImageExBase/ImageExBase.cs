@@ -5,6 +5,7 @@ using Microsoft.Graphics.Canvas;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
+using Microsoft.UI.Xaml.Shapes;
 using Windows.Foundation;
 using Windows.Web.Http;
 
@@ -21,6 +22,7 @@ public abstract partial class ImageExBase : LayoutControlBase
 
     // private int _retryCount;
     private ImageBrush? _backgroundBrush;
+    private Rectangle? _failedMask;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="ImageExBase"/> class.
@@ -110,6 +112,7 @@ public abstract partial class ImageExBase : LayoutControlBase
     protected override void OnApplyTemplate()
     {
         var rootBorder = GetTemplateChild("Root") as Panel ?? throw new InvalidOperationException("TemplateRoot not found.");
+        _failedMask = GetTemplateChild("FailedMask") as Rectangle;
         if (rootBorder.Background is ImageBrush brush)
         {
             _backgroundBrush = brush;

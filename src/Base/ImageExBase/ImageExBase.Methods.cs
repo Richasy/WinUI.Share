@@ -33,6 +33,7 @@ public abstract partial class ImageExBase
 
     private async Task TryLoadImageAsync(Uri uri)
     {
+        _failedMask.Visibility = Visibility.Visible;
         if (_backgroundBrush is null || _lastUri == uri || !IsLoaded)
         {
             return;
@@ -75,6 +76,7 @@ public abstract partial class ImageExBase
             {
                 DrawImage(bitmap);
                 _backgroundBrush.ImageSource = CanvasImageSource;
+                _failedMask.Visibility = Visibility.Collapsed;
                 ImageLoaded?.Invoke(this, EventArgs.Empty);
             }
         }
