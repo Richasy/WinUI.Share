@@ -50,6 +50,12 @@ public abstract partial class ImageExBase
         DependencyProperty.Register(nameof(ClearColor), typeof(Color), typeof(ImageExBase), new PropertyMetadata(Colors.Black));
 
     /// <summary>
+    /// <see cref="HolderImage"/> 的依赖属性.
+    /// </summary>
+    public static readonly DependencyProperty HolderImageProperty =
+        DependencyProperty.Register(nameof(HolderImage), typeof(Uri), typeof(ImageExBase), new PropertyMetadata(default));
+
+    /// <summary>
     /// 图片源.
     /// </summary>
     public Uri Source
@@ -107,6 +113,15 @@ public abstract partial class ImageExBase
     {
         get => (Color)GetValue(ClearColorProperty);
         set => SetValue(ClearColorProperty, value);
+    }
+
+    /// <summary>
+    /// 占位符图片.
+    /// </summary>
+    public Uri HolderImage
+    {
+        get => (Uri)GetValue(HolderImageProperty);
+        set => SetValue(HolderImageProperty, value);
     }
 
     /// <summary>

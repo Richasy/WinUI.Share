@@ -20,7 +20,13 @@ public abstract partial class ImageExBase
     private static async void OnSourceChangedAsync(DependencyObject d, DependencyPropertyChangedEventArgs e)
     {
         var instance = d as ImageExBase;
-        if (e.NewValue is Uri uri && instance.IsLoaded)
+        var uri = e.NewValue as Uri;
+        if (uri is null && instance.HolderImage is Uri holderUri)
+        {
+            uri = holderUri;
+        }
+
+        if (uri != null && instance.IsLoaded)
         {
             await instance.TryLoadImageAsync(uri);
         }
@@ -33,7 +39,11 @@ public abstract partial class ImageExBase
 
     private async Task TryLoadImageAsync(Uri uri)
     {
-        _failedMask.Visibility = Visibility.Visible;
+        if (uri is null && HolderImage != null)
+        {
+            uri = HolderImage;
+        }
+
         if (_backgroundBrush is null || _lastUri == uri || !IsLoaded)
         {
             return;
@@ -46,6 +56,11 @@ public abstract partial class ImageExBase
 
     private async Task LoadImageInternalAsync()
     {
+        if (_lastUri == null)
+        {
+            _lastUri = HolderImage;
+        }
+
         if (!IsLoaded || _lastUri is null || !TryInitialize())
         {
             IsImageLoading = false;
@@ -76,13 +91,17 @@ public abstract partial class ImageExBase
             {
                 DrawImage(bitmap);
                 _backgroundBrush.ImageSource = CanvasImageSource;
-                _failedMask.Visibility = Visibility.Collapsed;
                 ImageLoaded?.Invoke(this, EventArgs.Empty);
             }
         }
         catch (Exception ex)
         {
             Debug.WriteLine(ex.Message);
+            if (HolderImage is not null)
+            {
+                await TryLoadImageAsync(HolderImage);
+            }
+
             ImageFailed?.Invoke(this, EventArgs.Empty);
         }
         finally

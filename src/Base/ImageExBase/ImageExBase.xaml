@@ -19,14 +19,6 @@
                         x:Name="Root"
                         CornerRadius="{TemplateBinding CornerRadius}"
                         FlowDirection="LeftToRight">
-                        <Rectangle
-                            x:Name="FailedMask"
-                            HorizontalAlignment="Stretch"
-                            VerticalAlignment="Stretch"
-                            Fill="{ThemeResource CardBackgroundFillColorDefaultBrush}"
-                            RadiusX="4"
-                            RadiusY="4"
-                            Visibility="Collapsed" />
                         <local:Shimmer
                             HorizontalAlignment="Stretch"
                             VerticalAlignment="Stretch"
