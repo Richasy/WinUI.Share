@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Microsoft.UI;
 using Microsoft.UI.Input;
 using Microsoft.UI.Windowing;
@@ -29,7 +30,7 @@ public sealed partial class AppTitleBar
         }
     }
 
-    private void UpdateBackButton()
+    private async void UpdateBackButtonAsync()
     {
         if (IsBackButtonVisible)
         {
@@ -46,6 +47,8 @@ public sealed partial class AppTitleBar
         }
 
         UpdateInteractableElementsList();
+        await Task.Delay(100);
+        UpdateDragRegion();
     }
 
     private void UpdatePaneToggleButton()
@@ -228,13 +231,17 @@ public sealed partial class AppTitleBar
         {
             var appWindowId = islandEnv.AppWindowId;
             var nonClientPointerSource = InputNonClientPointerSource.GetForWindowId(appWindowId);
-
-            if (_interactableElementList.Count > 0 && Visibility == Visibility.Visible)
+            nonClientPointerSource.ClearRegionRects(NonClientRegionKind.Passthrough);
+            if (Visibility == Visibility.Collapsed)
+            {
+                nonClientPointerSource.SetRegionRects(NonClientRegionKind.Passthrough, [new(0, 0, (int)ActualWidth, (int)ActualHeight)]);
+            }
+            else if (_interactableElementList.Count > 0)
             {
                 var passthroughRects = new List<RectInt32>();
                 foreach (var element in _interactableElementList)
                 {
-                    var transformBounds = element.TransformToVisual(default);
+                    var transformBounds = element.TransformToVisual(this);
                     var width = element.ActualWidth;
                     var height = element.ActualHeight;
                     var bounds = transformBounds.TransformBounds(new Rect(0, 0, width, height));
@@ -254,10 +261,6 @@ public sealed partial class AppTitleBar
                 }
 
                 nonClientPointerSource.SetRegionRects(NonClientRegionKind.Passthrough, passthroughRects.ToArray());
-            }
-            else
-            {
-                nonClientPointerSource.ClearRegionRects(NonClientRegionKind.Passthrough);
             }
         }
     }

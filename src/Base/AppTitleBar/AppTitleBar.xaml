@@ -81,15 +81,10 @@
                             <Button
                                 x:Name="PART_BackButton"
                                 Grid.Column="0"
+                                x:Load="False"
                                 Style="{StaticResource TitleBarBackButtonStyle}"
                                 ToolTipService.ToolTip="Back"
-                                Visibility="Collapsed">
-                                <ic:SymbolIcon
-                                    x:Name="Content"
-                                    FontSize="14"
-                                    MirroredWhenRightToLeft="True"
-                                    Symbol="{TemplateBinding BackIcon}" />
-                            </Button>
+                                Visibility="Collapsed" />
 
                             <Button
                                 x:Name="PART_PaneToggleButton"
@@ -355,6 +350,7 @@
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Stretch" />
         <Setter Property="UseSystemFocusVisuals" Value="{StaticResource UseSystemFocusVisuals}" />
+        <Setter Property="Content" Value="&#xE64E;" />
         <Setter Property="Margin" Value="4" />
         <Setter Property="Template">
             <Setter.Value>
@@ -363,10 +359,23 @@
                         x:Name="RootGrid"
                         Background="{TemplateBinding Background}"
                         CornerRadius="{TemplateBinding CornerRadius}">
-                        <ContentPresenter
+                        <AnimatedIcon
                             x:Name="Content"
-                            Content="{TemplateBinding Content}"
-                            FontSize="{TemplateBinding FontSize}" />
+                            Width="16"
+                            Height="16"
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                            AnimatedIcon.State="Normal"
+                            AutomationProperties.AccessibilityView="Raw">
+                            <animatedvisuals:AnimatedBackVisualSource />
+                            <AnimatedIcon.FallbackIconSource>
+                                <FontIconSource
+                                    FontFamily="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=FontFamily}"
+                                    FontSize="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=FontSize}"
+                                    Glyph="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Content}"
+                                    MirroredWhenRightToLeft="True" />
+                            </AnimatedIcon.FallbackIconSource>
+                        </AnimatedIcon>
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CommonStates">
                                 <VisualState x:Name="Normal" />
@@ -379,6 +388,9 @@
                                             <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource NavigationViewButtonForegroundPointerOver}" />
                                         </ObjectAnimationUsingKeyFrames>
                                     </Storyboard>
+                                    <VisualState.Setters>
+                                        <Setter Target="Content.(AnimatedIcon.State)" Value="PointerOver" />
+                                    </VisualState.Setters>
                                 </VisualState>
                                 <VisualState x:Name="Pressed">
                                     <Storyboard>
@@ -389,6 +401,9 @@
                                             <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource NavigationViewButtonForegroundPressed}" />
                                         </ObjectAnimationUsingKeyFrames>
                                     </Storyboard>
+                                    <VisualState.Setters>
+                                        <Setter Target="Content.(AnimatedIcon.State)" Value="Pressed" />
+                                    </VisualState.Setters>
                                 </VisualState>
                                 <VisualState x:Name="Disabled">
                                     <Storyboard>

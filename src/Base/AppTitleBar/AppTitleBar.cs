@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Richasy. All rights reserved.
 
 using System;
+using System.Threading.Tasks;
 using Microsoft.UI.Input;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
@@ -12,19 +13,12 @@ namespace Richasy.WinUI.Share.Base;
 /// 应用标题栏.
 /// </summary>
 [ContentProperty(Name = "Content")]
-public sealed partial class AppTitleBar : Control
+public sealed partial class AppTitleBar : LayoutControlBase
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="AppTitleBar"/> class.
     /// </summary>
-    public AppTitleBar()
-    {
-        DefaultStyleKey = typeof(AppTitleBar);
-        SizeChanged += OnSizeChanged;
-        LayoutUpdated += OnLayoutUpdated;
-        ActualThemeChanged += OnActualThemeChanged;
-        Unloaded += OnUnloaded;
-    }
+    public AppTitleBar() => DefaultStyleKey = typeof(AppTitleBar);
 
     /// <summary>
     /// 后退请求.
@@ -35,6 +29,15 @@ public sealed partial class AppTitleBar : Control
     /// 切换导航面板请求.
     /// </summary>
     public event EventHandler PaneToggleRequested;
+
+    /// <summary>
+    /// 延迟更新 UI.
+    /// </summary>
+    public async void DelayUpdateAsync()
+    {
+        await Task.Delay(150);
+        UpdateDragRegion();
+    }
 
     /// <inheritdoc/>
     protected override void OnApplyTemplate()
@@ -53,7 +56,7 @@ public sealed partial class AppTitleBar : Control
         UpdateHeight();
         UpdatePadding();
         UpdateIcon();
-        UpdateBackButton();
+        UpdateBackButtonAsync();
         UpdatePaneToggleButton();
         UpdateTheme();
         UpdateTitle();
@@ -65,10 +68,41 @@ public sealed partial class AppTitleBar : Control
         UpdateInteractableElementsList();
     }
 
+    /// <inheritdoc/>
+    protected override void OnControlLoaded()
+    {
+        ActualThemeChanged += OnActualThemeChanged;
+        SizeChanged += OnSizeChanged;
+        UpdateDragRegion();
+    }
+
+    /// <inheritdoc/>
+    protected override void OnControlUnloaded()
+    {
+        if (_inputActivationListener is not null)
+        {
+            _inputActivationListener.InputActivationChanged -= OnInputActivationChanged;
+            _inputActivationListener = default;
+        }
+
+        if (_backButton is not null)
+        {
+            _backButton.Click -= OnBackButtonClick;
+        }
+
+        if (_paneToggleButton is not null)
+        {
+            _paneToggleButton.Click -= OnPaneToggleButtonClick;
+        }
+
+        SizeChanged -= OnSizeChanged;
+        ActualThemeChanged -= OnActualThemeChanged;
+    }
+
     private static void OnBackButtonVisibleChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
     {
         var instance = d as AppTitleBar;
-        instance?.UpdateBackButton();
+        instance?.UpdateBackButtonAsync();
     }
 
     private static void OnIsBackEnabledChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
@@ -146,9 +180,6 @@ public sealed partial class AppTitleBar : Control
         UpdateDragRegion();
     }
 
-    private void OnLayoutUpdated(object? sender, object e)
-        => UpdateDragRegion();
-
     private void OnActualThemeChanged(FrameworkElement sender, object args)
         => UpdateTheme();
 
@@ -202,30 +233,6 @@ public sealed partial class AppTitleBar : Control
 
     private void OnPaneToggleButtonClick(object sender, RoutedEventArgs e)
         => PaneToggleRequested?.Invoke(this, EventArgs.Empty);
-
-    private void OnUnloaded(object sender, RoutedEventArgs e)
-    {
-        if (_inputActivationListener is not null)
-        {
-            _inputActivationListener.InputActivationChanged -= OnInputActivationChanged;
-            _inputActivationListener = default;
-        }
-
-        if (_backButton is not null)
-        {
-            _backButton.Click -= OnBackButtonClick;
-        }
-
-        if (_paneToggleButton is not null)
-        {
-            _paneToggleButton.Click -= OnPaneToggleButtonClick;
-        }
-
-        SizeChanged -= OnSizeChanged;
-        LayoutUpdated -= OnLayoutUpdated;
-        ActualThemeChanged -= OnActualThemeChanged;
-        Unloaded -= OnUnloaded;
-    }
 }
 
 /// <summary>
