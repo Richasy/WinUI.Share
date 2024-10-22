@@ -33,9 +33,10 @@ public sealed partial class AppTitleBar : LayoutControlBase
     /// <summary>
     /// 延迟更新 UI.
     /// </summary>
-    public async void DelayUpdateAsync()
+    public async void DelayUpdateAsync(int delayMilliseconds)
     {
-        await Task.Delay(150);
+        await Task.Delay(delayMilliseconds);
+        UpdateInteractableElementsList();
         UpdateDragRegion();
     }
 
