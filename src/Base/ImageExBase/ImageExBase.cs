@@ -7,6 +7,7 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
 using Windows.Foundation;
 using Windows.Web.Http;
+using Windows.Web.Http.Filters;
 
 namespace Richasy.WinUI.Share.Base;
 
@@ -16,7 +17,7 @@ namespace Richasy.WinUI.Share.Base;
 public abstract partial class ImageExBase : LayoutControlBase
 {
     private const int MaxRetryCount = 3;
-    private static readonly HttpClient _httpClient = new();
+    private static readonly HttpClient _httpClient = CreateHttpClientIgnoringCertificateErrors();
     private Uri? _lastUri;
 
     // private int _retryCount;
@@ -149,6 +150,18 @@ public abstract partial class ImageExBase : LayoutControlBase
             _backgroundBrush.ImageSource = default;
             _backgroundBrush = null;
         }
+    }
+
+    private static HttpClient CreateHttpClientIgnoringCertificateErrors()
+    {
+        // 创建 HttpBaseProtocolFilter 并处理 ServerCustomValidationRequested 事件
+        var filter = new HttpBaseProtocolFilter();
+        filter.IgnorableServerCertificateErrors.Add(Windows.Security.Cryptography.Certificates.ChainValidationResult.InvalidName);
+        filter.IgnorableServerCertificateErrors.Add(Windows.Security.Cryptography.Certificates.ChainValidationResult.Untrusted);
+        filter.IgnorableServerCertificateErrors.Add(Windows.Security.Cryptography.Certificates.ChainValidationResult.Expired);
+
+        // 创建 HttpClient 实例
+        return new HttpClient(filter);
     }
 
     private async void OnActualThemeChangedAsync(FrameworkElement sender, object args)
