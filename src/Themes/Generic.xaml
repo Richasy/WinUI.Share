@@ -4,5 +4,6 @@
         <ResourceDictionary Source="ms-appx:///Richasy.WinUI.Share/Base/ImageExBase/ImageExBase.xaml" />
         <ResourceDictionary Source="ms-appx:///Richasy.WinUI.Share/Base/SettingsControls/SettingsCard/SettingsCard.xaml" />
         <ResourceDictionary Source="ms-appx:///Richasy.WinUI.Share/Base/SettingsControls/SettingsExpander/SettingsExpander.xaml" />
+        <ResourceDictionary Source="ms-appx:///Richasy.WinUI.Share/Base/AppToggleCard/AppToggleCard.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>
