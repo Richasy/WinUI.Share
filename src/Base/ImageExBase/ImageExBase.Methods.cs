@@ -76,6 +76,11 @@ public abstract partial class ImageExBase
         catch (Exception ex)
         {
             Debug.WriteLine(ex.Message);
+            if (HolderImage is not null)
+            {
+                await TryLoadImageAsync(HolderImage);
+            }
+
             ImageFailed?.Invoke(this, EventArgs.Empty);
         }
 
