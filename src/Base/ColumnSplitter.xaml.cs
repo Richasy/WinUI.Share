@@ -58,6 +58,12 @@ public sealed partial class ColumnSplitter : LayoutUserControlBase
         DependencyProperty.Register(nameof(ShowTip), typeof(string), typeof(ColumnSplitter), new PropertyMetadata("Hide"));
 
     /// <summary>
+    /// <see cref="AlwaysShowButtonWhenCollapsed"/> 依赖属性.
+    /// </summary>
+    public static readonly DependencyProperty AlwaysShowButtonWhenCollapsedProperty =
+        DependencyProperty.Register(nameof(AlwaysShowButtonWhenCollapsed), typeof(bool), typeof(ColumnSplitter), new PropertyMetadata(default));
+
+    /// <summary>
     /// Initializes a new instance of the <see cref="ColumnSplitter"/> class.
     /// </summary>
     public ColumnSplitter() => InitializeComponent();
@@ -132,6 +138,15 @@ public sealed partial class ColumnSplitter : LayoutUserControlBase
     {
         get => (string)GetValue(HideTipProperty);
         set => SetValue(HideTipProperty, value);
+    }
+
+    /// <summary>
+    /// 在折叠时不隐藏按钮.
+    /// </summary>
+    public bool AlwaysShowButtonWhenCollapsed
+    {
+        get => (bool)GetValue(AlwaysShowButtonWhenCollapsedProperty);
+        set => SetValue(AlwaysShowButtonWhenCollapsedProperty, value);
     }
 
     /// <inheritdoc/>

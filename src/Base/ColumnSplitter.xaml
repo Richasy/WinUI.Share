@@ -33,6 +33,7 @@
             x:Name="ToggleBtn"
             Margin="0,0,-32,0"
             VerticalAlignment="Stretch"
+            AlwaysShowWhenCollapsed="{x:Bind AlwaysShowButtonWhenCollapsed, Mode=OneWay}"
             CornerRadius="0,6,6,0"
             HideTip="{x:Bind HideTip, Mode=OneWay}"
             IsEnabled="{x:Bind IsHideButtonEnabled, Mode=OneWay}"

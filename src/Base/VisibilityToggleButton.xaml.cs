@@ -27,6 +27,12 @@ public sealed partial class VisibilityToggleButton : LayoutUserControlBase
         DependencyProperty.Register(nameof(IsHide), typeof(bool), typeof(VisibilityToggleButton), new PropertyMetadata(default, new PropertyChangedCallback(OnIsHideChanged)));
 
     /// <summary>
+    /// <see cref="AlwaysShowWhenCollapsed"/> 依赖属性.
+    /// </summary>
+    public static readonly DependencyProperty AlwaysShowWhenCollapsedProperty =
+        DependencyProperty.Register(nameof(AlwaysShowWhenCollapsed), typeof(bool), typeof(VisibilityToggleButton), new PropertyMetadata(default));
+
+    /// <summary>
     /// Initializes a new instance of the <see cref="VisibilityToggleButton"/> class.
     /// </summary>
     public VisibilityToggleButton() => InitializeComponent();
@@ -52,6 +58,15 @@ public sealed partial class VisibilityToggleButton : LayoutUserControlBase
     {
         get => (bool)GetValue(IsHideProperty);
         set => SetValue(IsHideProperty, value);
+    }
+
+    /// <summary>
+    /// 在折叠时不隐藏按钮.
+    /// </summary>
+    public bool AlwaysShowWhenCollapsed
+    {
+        get => (bool)GetValue(AlwaysShowWhenCollapsedProperty);
+        set => SetValue(AlwaysShowWhenCollapsedProperty, value);
     }
 
     /// <summary>
@@ -105,6 +120,8 @@ public sealed partial class VisibilityToggleButton : LayoutUserControlBase
             container.Margin = IsHide
             ? Direction == VisibilityToggleButtonDirection.LeftToRightVisible ? new Thickness(-4, 0, 0, 0) : new Thickness(0, 0, -4, 0)
             : new Thickness(0);
+
+            HideButton();
         }
     }
 
@@ -124,6 +141,10 @@ public sealed partial class VisibilityToggleButton : LayoutUserControlBase
     {
         Btn.Visibility = Visibility.Collapsed;
         BackgroundGrid.Visibility = Visibility.Collapsed;
+        if (AlwaysShowWhenCollapsed && IsHide && IsEnabled)
+        {
+            ShowButton();
+        }
     }
 }
 
