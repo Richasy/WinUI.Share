@@ -82,14 +82,20 @@
                                 x:Name="PART_BackButton"
                                 Grid.Column="0"
                                 x:Load="False"
+                                AccessKey="B"
                                 Style="{StaticResource TitleBarBackButtonStyle}"
                                 ToolTipService.ToolTip="Back"
-                                Visibility="Collapsed" />
+                                Visibility="Collapsed">
+                                <Button.KeyboardAccelerators>
+                                    <KeyboardAccelerator Key="Back" />
+                                </Button.KeyboardAccelerators>
+                            </Button>
 
                             <Button
                                 x:Name="PART_PaneToggleButton"
                                 Grid.Column="1"
                                 x:Load="False"
+                                AccessKey="`"
                                 Style="{ThemeResource TitleBarPaneToggleButtonStyle}"
                                 ToolTipService.ToolTip="Navigation"
                                 Visibility="Collapsed" />
