@@ -18,6 +18,7 @@
   <ItemGroup>
     <None Remove="Base\AppTitleBar.xaml" />
     <None Remove="Base\AppToggleCard\AppToggleCard.xaml" />
+    <None Remove="Base\CardControl\CardControl.xaml" />
     <None Remove="Base\ColumnSplitter.xaml" />
     <None Remove="Base\CustomNavigationViewResources.xaml" />
     <None Remove="Base\IconTextBlock.xaml" />
@@ -60,6 +61,12 @@
 
   <ItemGroup>
     <Folder Include="Base\AppTitleBar\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Base\CardControl\CardControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
 
   <ItemGroup>

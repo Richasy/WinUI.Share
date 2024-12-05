@@ -2,6 +2,7 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="ms-appx:///Richasy.WinUI.Share/Base/AppTitleBar/AppTitleBar.xaml" />
         <ResourceDictionary Source="ms-appx:///Richasy.WinUI.Share/Base/ImageExBase/ImageExBase.xaml" />
+        <ResourceDictionary Source="ms-appx:///Richasy.WinUI.Share/Base/CardControl/CardControl.xaml" />
         <ResourceDictionary Source="ms-appx:///Richasy.WinUI.Share/Base/SettingsControls/SettingsCard/SettingsCard.xaml" />
         <ResourceDictionary Source="ms-appx:///Richasy.WinUI.Share/Base/SettingsControls/SettingsExpander/SettingsExpander.xaml" />
         <ResourceDictionary Source="ms-appx:///Richasy.WinUI.Share/Base/AppToggleCard/AppToggleCard.xaml" />

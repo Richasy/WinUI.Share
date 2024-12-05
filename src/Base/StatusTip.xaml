@@ -59,6 +59,7 @@
         <TextBlock
             Grid.Column="1"
             MaxWidth="300"
+            Margin="0,2,0,0"
             VerticalAlignment="Center"
             FontSize="13"
             Text="{x:Bind Text, Mode=OneWay}"
