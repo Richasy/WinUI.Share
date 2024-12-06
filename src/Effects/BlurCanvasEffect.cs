@@ -40,7 +40,7 @@ public sealed partial class BlurCanvasEffect : CanvasEffect
     public IGraphicsEffectSource Source
     {
         get => _source;
-        set => SetAndInvalidateEffectGraph(ref _source, value);
+        set => SetPropertyAndInvalidateEffectGraph(ref _source, value);
     }
 
     /// <summary>
@@ -49,7 +49,7 @@ public sealed partial class BlurCanvasEffect : CanvasEffect
     public float BlurAmount
     {
         get => _blurAmount;
-        set => SetAndInvalidateEffectGraph(ref _blurAmount, value);
+        set => SetPropertyAndInvalidateEffectGraph(ref _blurAmount, value);
     }
 
     /// <summary>
@@ -58,7 +58,7 @@ public sealed partial class BlurCanvasEffect : CanvasEffect
     public Color TintColor
     {
         get => _tintColor;
-        set => SetAndInvalidateEffectGraph(ref _tintColor, value);
+        set => SetPropertyAndInvalidateEffectGraph(ref _tintColor, value);
     }
 
     /// <summary>
@@ -67,7 +67,7 @@ public sealed partial class BlurCanvasEffect : CanvasEffect
     public int CrossfadeVerticalOffset
     {
         get => _crossfadeVerticalOffset;
-        set => SetAndInvalidateEffectGraph(ref _crossfadeVerticalOffset, value);
+        set => SetPropertyAndInvalidateEffectGraph(ref _crossfadeVerticalOffset, value);
     }
 
     /// <summary>
@@ -76,7 +76,7 @@ public sealed partial class BlurCanvasEffect : CanvasEffect
     public int CrossfadeVerticalLength
     {
         get => _crossfadeVerticalLength;
-        set => SetAndInvalidateEffectGraph(ref _crossfadeVerticalLength, value);
+        set => SetPropertyAndInvalidateEffectGraph(ref _crossfadeVerticalLength, value);
     }
 
     /// <summary>
@@ -85,7 +85,7 @@ public sealed partial class BlurCanvasEffect : CanvasEffect
     public Rect SourceRectangle
     {
         get => _sourceRectangle;
-        set => SetAndInvalidateEffectGraph(ref _sourceRectangle, value);
+        set => SetPropertyAndInvalidateEffectGraph(ref _sourceRectangle, value);
     }
 
     /// <summary>
@@ -94,7 +94,7 @@ public sealed partial class BlurCanvasEffect : CanvasEffect
     public Rect DestinationRectangle
     {
         get => _destinationRectangle;
-        set => SetAndInvalidateEffectGraph(ref _destinationRectangle, value);
+        set => SetPropertyAndInvalidateEffectGraph(ref _destinationRectangle, value);
     }
 
     /// <inheritdoc/>
