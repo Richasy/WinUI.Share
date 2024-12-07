@@ -16,6 +16,7 @@ public abstract class LayoutControlBase : Control
     /// </summary>
     protected LayoutControlBase()
     {
+        IsTabStop = false;
         Loaded += OnLoaded;
         Unloaded += OnUnloaded;
     }
