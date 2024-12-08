@@ -23,6 +23,12 @@ public sealed partial class TrimTextBlock : UserControl
         DependencyProperty.Register(nameof(MaxLines), typeof(int), typeof(TrimTextBlock), new PropertyMetadata(99));
 
     /// <summary>
+    /// <see cref="IsTextSelectionEnabled"/> 的依赖属性.
+    /// </summary>
+    public static readonly DependencyProperty IsTextSelectionEnabledProperty =
+        DependencyProperty.Register(nameof(IsTextSelectionEnabled), typeof(bool), typeof(TrimTextBlock), new PropertyMetadata(false));
+
+    /// <summary>
     /// Initializes a new instance of the <see cref="TrimTextBlock"/> class.
     /// </summary>
     public TrimTextBlock()
@@ -46,5 +52,14 @@ public sealed partial class TrimTextBlock : UserControl
     {
         get => (int)GetValue(MaxLinesProperty);
         set => SetValue(MaxLinesProperty, value);
+    }
+
+    /// <summary>
+    /// 是否支持文本选择.
+    /// </summary>
+    public bool IsTextSelectionEnabled
+    {
+        get => (bool)GetValue(IsTextSelectionEnabledProperty);
+        set => SetValue(IsTextSelectionEnabledProperty, value);
     }
 }
