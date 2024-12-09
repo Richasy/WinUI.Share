@@ -41,7 +41,6 @@
     <PackageReference Include="CommunityToolkit.WinUI.Media" />
     <PackageReference Include="CommunityToolkit.WinUI.Triggers" />
     <PackageReference Include="FluentIcons.WinUI" />
-    <PackageReference Include="Microsoft.Windows.CsWinRT" />
     <PackageReference Include="Microsoft.WindowsAppSDK" />
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" />
     <PackageReference Include="Microsoft.Graphics.Win2D" />
