@@ -187,7 +187,7 @@
                                 <SplitView.Pane>
                                     <Grid
                                         x:Name="PaneContentGrid"
-                                        Margin="{ThemeResource NavigationViewPaneContentGridMargin}"
+                                        Margin="-1,1"
                                         HorizontalAlignment="Left"
                                         BorderBrush="{ThemeResource NavigationViewItemSeparatorForeground}"
                                         Visibility="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=TemplateSettings.LeftPaneVisibility}">
@@ -198,12 +198,11 @@
                                             <RowDefinition x:Name="PaneContentGridToggleButtonRow" Height="Auto" />
                                             <RowDefinition Height="Auto" />
                                             <RowDefinition Height="Auto" />
-                                            <RowDefinition Height="4" />
+                                            <RowDefinition Height="0" />
                                             <!--  above list margin  -->
                                             <RowDefinition x:Name="ItemsContainerRow" Height="*" />
                                         </Grid.RowDefinitions>
-                                        <Grid x:Name="ContentPaneTopPadding" Height="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=TemplateSettings.TopPadding}" />
-                                        <Grid Grid.Row="2">
+                                        <Grid Grid.Row="2" Visibility="Collapsed">
                                             <Grid.RowDefinitions>
                                                 <RowDefinition x:Name="PaneHeaderContentBorderRow" />
                                             </Grid.RowDefinitions>
@@ -223,7 +222,8 @@
                                             x:Name="AutoSuggestArea"
                                             Grid.Row="3"
                                             Height="{ThemeResource NavigationViewAutoSuggestAreaHeight}"
-                                            VerticalAlignment="Center">
+                                            VerticalAlignment="Center"
+                                            x:Load="False">
                                             <ContentControl
                                                 x:Name="PaneAutoSuggestBoxPresenter"
                                                 Margin="{ThemeResource NavigationViewAutoSuggestBoxMargin}"
@@ -309,6 +309,8 @@
                                         x:Name="ContentGrid"
                                         Margin="{ThemeResource NavigationViewContentMargin}"
                                         Background="{ThemeResource NavigationViewContentBackground}"
+                                        BorderBrush="{ThemeResource NavigationViewContentGridBorderBrush}"
+                                        BorderThickness="{ThemeResource NavigationViewContentGridBorderThickness}"
                                         CornerRadius="{ThemeResource NavigationViewContentGridCornerRadius}">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="Auto" />
@@ -322,7 +324,7 @@
                                         <Grid
                                             x:Name="ContentTopPadding"
                                             Grid.ColumnSpan="2"
-                                            Height="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=TemplateSettings.TopPadding}"
+                                            Height="0"
                                             Visibility="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=TemplateSettings.LeftPaneVisibility}" />
                                         <Grid x:Name="ContentLeftPadding" Grid.Row="1" />
                                         <ContentControl
@@ -340,7 +342,6 @@
                                             x:Name="ContentPresenter"
                                             Grid.Row="2"
                                             Grid.ColumnSpan="2"
-                                            Margin="{ThemeResource NavigationViewContentPresenterMargin}"
                                             AutomationProperties.LandmarkType="Main"
                                             Content="{TemplateBinding Content}" />
                                     </Grid>
