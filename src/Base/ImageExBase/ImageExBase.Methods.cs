@@ -111,8 +111,12 @@ public abstract partial class ImageExBase
         }
         finally
         {
-            IsImageLoading = false;
-            bitmap.Dispose();
+            if (IsLoaded)
+            {
+                IsImageLoading = false;
+            }
+
+            bitmap?.Dispose();
         }
     }
 
