@@ -242,7 +242,7 @@ public sealed partial class AppTitleBar
                 foreach (var element in _interactableElementList)
                 {
                     var transformBounds = element.TransformToVisual(this);
-                    var width = element.ActualWidth;
+                    var width = element.Visibility == Visibility.Collapsed ? 0d : element.ActualWidth;
                     var height = element.ActualHeight;
                     var bounds = transformBounds.TransformBounds(new Rect(0, 0, width, height));
 
