@@ -156,14 +156,21 @@ public abstract partial class ImageExBase
     private async Task<CanvasBitmap?> FetchImageAsync()
     {
         var requestUri = _lastUri;
-        CanvasBitmap? canvasBitmap;
+        CanvasBitmap? canvasBitmap = default;
 
         // 区分本地链接和网络链接.
         if (_lastUri.IsFile)
         {
-            var file = await StorageFile.GetFileFromPathAsync(requestUri.LocalPath);
-            using var stream = await file.OpenReadAsync();
-            canvasBitmap = await CanvasBitmap.LoadAsync(CanvasDevice.GetSharedDevice(), stream).AsTask();
+            try
+            {
+                var file = await StorageFile.GetFileFromPathAsync(requestUri.LocalPath);
+                using var stream = await file.OpenReadAsync();
+                canvasBitmap = await CanvasBitmap.LoadAsync(CanvasDevice.GetSharedDevice(), stream).AsTask();
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+            }
         }
         else
         {
@@ -185,7 +192,7 @@ public abstract partial class ImageExBase
 
         if (_lastUri != requestUri)
         {
-            canvasBitmap.Dispose();
+            canvasBitmap?.Dispose();
             canvasBitmap = default;
         }
 
