@@ -18,6 +18,7 @@
     <None Remove="Base\CardControl\CardControl.xaml" />
     <None Remove="Base\ColumnSplitter.xaml" />
     <None Remove="Base\CustomNavigationViewResources.xaml" />
+    <None Remove="Base\DraggableCardControl\DraggableCardControl.xaml" />
     <None Remove="Base\IconTextBlock.xaml" />
     <None Remove="Base\ImageExBase\ImageExBase.xaml" />
     <None Remove="Base\LoadingWidget.xaml" />
@@ -56,6 +57,12 @@
 
   <ItemGroup>
     <Folder Include="Base\AppTitleBar\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Base\DraggableCardControl\DraggableCardControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
 
   <ItemGroup>
