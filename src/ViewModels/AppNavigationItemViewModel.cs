@@ -28,6 +28,9 @@ public sealed partial class AppNavigationItemViewModel : ViewModelBase
     [ObservableProperty]
     private string _accessKey;
 
+    [ObservableProperty]
+    private bool _isVisible;
+
     /// <summary>
     /// Initializes a new instance of the <see cref="AppNavigationItemViewModel"/> class.
     /// </summary>
@@ -37,7 +40,8 @@ public sealed partial class AppNavigationItemViewModel : ViewModelBase
         string title,
         FluentIcons.Common.Symbol? symbol = default,
         bool isSelected = false,
-        string accessKey = "")
+        string accessKey = "",
+        bool isVisible = true)
     {
         PageKey = pageType.FullName;
         Title = title;
@@ -45,6 +49,7 @@ public sealed partial class AppNavigationItemViewModel : ViewModelBase
         IsSelected = isSelected;
         AccessKey = accessKey;
         _navigateAction = parameter => navService.NavigateTo(pageType, parameter);
+        _isVisible = isVisible;
     }
 
     /// <summary>
