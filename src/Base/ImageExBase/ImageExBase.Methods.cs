@@ -17,7 +17,7 @@ namespace Richasy.WinUI.Share.Base;
 /// </summary>
 public abstract partial class ImageExBase
 {
-    private static async void OnSourceChangedAsync(DependencyObject d, DependencyPropertyChangedEventArgs e)
+    private static void OnSourceChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
     {
         var instance = d as ImageExBase;
         var uri = e.NewValue as Uri;
@@ -28,7 +28,10 @@ public abstract partial class ImageExBase
 
         if (uri != null && instance.IsLoaded)
         {
-            await instance.TryLoadImageAsync(uri);
+            instance.DispatcherQueue.TryEnqueue(Microsoft.UI.Dispatching.DispatcherQueuePriority.Low, async () =>
+            {
+                await instance.TryLoadImageAsync(uri);
+            });
         }
     }
 

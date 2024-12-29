@@ -17,7 +17,7 @@ public abstract partial class ImageExBase
     /// <see cref="Source"/> 依赖属性.
     /// </summary>
     public static readonly DependencyProperty SourceProperty =
-        DependencyProperty.Register(nameof(Source), typeof(Uri), typeof(ImageExBase), new PropertyMetadata(default, new PropertyChangedCallback(OnSourceChangedAsync)));
+        DependencyProperty.Register(nameof(Source), typeof(Uri), typeof(ImageExBase), new PropertyMetadata(default, new PropertyChangedCallback(OnSourceChanged)));
 
     /// <summary>
     /// <see cref="IsShimmerEnabled"/> 依赖属性.
