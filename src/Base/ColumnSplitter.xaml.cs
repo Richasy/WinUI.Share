@@ -43,7 +43,7 @@ public sealed partial class ColumnSplitter : LayoutUserControlBase
     /// <see cref="IsInvertDirection"/> 依赖属性.
     /// </summary>
     public static readonly DependencyProperty IsInvertDirectionProperty =
-        DependencyProperty.Register(nameof(IsInvertDirection), typeof(bool), typeof(ColumnSplitter), new PropertyMetadata(default));
+        DependencyProperty.Register(nameof(IsInvertDirection), typeof(bool), typeof(ColumnSplitter), new PropertyMetadata(default, new PropertyChangedCallback(OnInvertDirectionChanged)));
 
     /// <summary>
     /// <see cref="HideTip"/> 的依赖属性.
@@ -152,12 +152,21 @@ public sealed partial class ColumnSplitter : LayoutUserControlBase
     /// <inheritdoc/>
     protected override void OnControlLoaded()
     {
-        if (IsInvertDirection)
+        DispatcherQueue.TryEnqueue(Microsoft.UI.Dispatching.DispatcherQueuePriority.Low, () =>
         {
-            Sizer.IsDragInverted = true;
-            ToggleBtn.Direction = VisibilityToggleButtonDirection.RightToLeftVisible;
-            ToggleBtn.Margin = new Thickness(-32, 0, 0, 0);
-            ToggleBtn.CornerRadius = new CornerRadius(6, 0, 0, 6);
-        }
+            if (IsInvertDirection)
+            {
+                Sizer.IsDragInverted = true;
+                ToggleBtn.Direction = VisibilityToggleButtonDirection.RightToLeftVisible;
+                ToggleBtn.Margin = new Thickness(-32, 0, 0, 0);
+                ToggleBtn.CornerRadius = new CornerRadius(6, 0, 0, 6);
+            }
+        });
+    }
+
+    private static void OnInvertDirectionChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+    {
+        var instance = d as ColumnSplitter;
+        instance.OnControlLoaded();
     }
 }

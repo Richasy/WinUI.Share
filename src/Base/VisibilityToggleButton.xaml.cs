@@ -18,7 +18,7 @@ public sealed partial class VisibilityToggleButton : LayoutUserControlBase
     /// <see cref="Direction"/> 依赖属性.
     /// </summary>
     public static readonly DependencyProperty DirectionProperty =
-        DependencyProperty.Register(nameof(Direction), typeof(VisibilityToggleButtonDirection), typeof(VisibilityToggleButton), new PropertyMetadata(VisibilityToggleButtonDirection.LeftToRightVisible));
+        DependencyProperty.Register(nameof(Direction), typeof(VisibilityToggleButtonDirection), typeof(VisibilityToggleButton), new PropertyMetadata(VisibilityToggleButtonDirection.LeftToRightVisible, new PropertyChangedCallback(OnDirectionChanged)));
 
     /// <summary>
     /// <see cref="IsHide"/> 依赖属性.
@@ -100,6 +100,12 @@ public sealed partial class VisibilityToggleButton : LayoutUserControlBase
         => CheckButtonStates();
 
     private static void OnIsHideChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+    {
+        var instance = d as VisibilityToggleButton;
+        instance?.CheckButtonStates();
+    }
+
+    private static void OnDirectionChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
     {
         var instance = d as VisibilityToggleButton;
         instance?.CheckButtonStates();
