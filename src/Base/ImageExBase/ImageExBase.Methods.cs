@@ -178,6 +178,7 @@ public abstract partial class ImageExBase
         else
         {
             var initialCapacity = 32 * 1024;
+            CheckImageReferer();
             using var bufferWriter = new ArrayPoolBufferWriter<byte>(initialCapacity);
             using var imageStream = await _httpClient.GetInputStreamAsync(_lastUri);
             using var streamForRead = imageStream.AsStreamForRead();
@@ -200,5 +201,17 @@ public abstract partial class ImageExBase
         }
 
         return canvasBitmap;
+    }
+
+    private void CheckImageReferer()
+    {
+        if (_lastUri is not null && _lastUri.Host.Contains("pximg.net"))
+        {
+            _httpClient.DefaultRequestHeaders.Referer = new("https://app-api.pixiv.net/");
+        }
+        else
+        {
+            _httpClient.DefaultRequestHeaders.Referer = default;
+        }
     }
 }
