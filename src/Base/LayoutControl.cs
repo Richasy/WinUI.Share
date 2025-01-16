@@ -41,9 +41,7 @@ public abstract class LayoutControlBase : Control
     }
 
     private void OnLoaded(object sender, RoutedEventArgs e)
-    {
-        OnControlLoaded();
-    }
+        => OnControlLoaded();
 
     private void OnUnloaded(object sender, RoutedEventArgs e)
     {
@@ -83,9 +81,33 @@ public abstract class LayoutControlBase<TViewModel> : LayoutControlBase
     {
     }
 
+    /// <summary>
+    /// 当视图模型发生变化时，分配值（用于 AOT 赋值）.
+    /// </summary>
+    protected virtual void AssignValuesWhenViewModelChanged()
+    {
+    }
+
+    /// <inheritdoc/>
+    protected override void OnApplyTemplate()
+    {
+        base.OnApplyTemplate();
+        AssignValuesWhenViewModelChanged();
+    }
+
+    /// <inheritdoc/>
+    protected override void OnControlLoaded()
+    {
+        if (ViewModel != null)
+        {
+            AssignValuesWhenViewModelChanged();
+        }
+    }
+
     private static void OnViewModelChangedInternal(DependencyObject d, DependencyPropertyChangedEventArgs e)
     {
         var instance = d as LayoutControlBase<TViewModel>;
         instance?.OnViewModelChanged((TViewModel?)e.OldValue, (TViewModel?)e.NewValue);
+        instance?.AssignValuesWhenViewModelChanged();
     }
 }
