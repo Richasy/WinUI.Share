@@ -37,6 +37,7 @@
     <None Remove="Base\Shimmer.xaml" />
     <None Remove="Base\SideSplitButton.xaml" />
     <None Remove="Base\StatusTip.xaml" />
+    <None Remove="Base\TipHeader.xaml" />
     <None Remove="Base\TipPopup.xaml" />
     <None Remove="Base\TrimTextBlock.xaml" />
     <None Remove="Base\VisibilityToggleButton.xaml" />
@@ -56,6 +57,8 @@
     <PackageReference Include="Microsoft.WindowsAppSDK" />
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" />
     <PackageReference Include="Microsoft.Graphics.Win2D" />
+    <PackageReference Include="RichasyKernel.Abstractions" />
+    <PackageReference Include="System.Drawing.Common" />
     <PackageReference Include="WinUIEx" />
   </ItemGroup>
 
@@ -67,6 +70,12 @@
 
   <ItemGroup>
     <Folder Include="Base\AppTitleBar\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Base\TipHeader.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
 
   <ItemGroup>

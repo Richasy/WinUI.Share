@@ -9,7 +9,7 @@ using Microsoft.UI.Xaml.Media.Imaging;
 using Richasy.WinUIKernel.Share.Base;
 using Windows.UI.ViewManagement;
 
-namespace Richasy.WinUIKernel.AI.Controls;
+namespace Richasy.WinUIKernel.AI;
 
 /// <summary>
 /// AI Logo.
@@ -96,6 +96,11 @@ public sealed partial class AILogo : LayoutControlBase
 
     private void ResetLogo()
     {
+        if (_avatarContainer is null)
+        {
+            return;
+        }
+
         var highContrast = new AccessibilitySettings().HighContrast;
         var themeText = highContrast
             ? "dark"

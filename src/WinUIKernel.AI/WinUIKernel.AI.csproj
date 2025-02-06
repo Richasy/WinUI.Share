@@ -1,16 +1,17 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net9.0-windows10.0.22621.0</TargetFramework>
-    <TargetPlatformMinVersion>10.0.9041.0</TargetPlatformMinVersion>
-	<AssemblyName>Richasy.WinUIKernel.AI</AssemblyName>
-	<RootNamespace>$(AssemblyName)</RootNamespace>
+    <TargetPlatformMinVersion>10.0.19041.0</TargetPlatformMinVersion>
+    <AssemblyName>Richasy.WinUIKernel.AI</AssemblyName>
+    <RootNamespace>$(AssemblyName)</RootNamespace>
     <RuntimeIdentifiers>win-x86;win-x64;win-arm64</RuntimeIdentifiers>
     <UseWinUI>true</UseWinUI>
-	<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-	<Nullable>enable</Nullable>
-	<IsAotCompatible>true</IsAotCompatible>
-	<WebView2EnableCsWinRTProjectionExcludeCoreRef>true</WebView2EnableCsWinRTProjectionExcludeCoreRef>
-	<Platforms>x64;x86;ARM64</Platforms>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Nullable>enable</Nullable>
+    <IsAotCompatible>true</IsAotCompatible>
+    <Platforms>x64;x86;ARM64</Platforms>
+    <NoWarn>$(NoWarn);MVVMTK0045;MVVMTK0046;MSB3030;IL2059</NoWarn>
+    <WebView2EnableCsWinRTProjectionExcludeCoreRef>true</WebView2EnableCsWinRTProjectionExcludeCoreRef>
   </PropertyGroup>
   
   <Import Project="$(RepoRoot)/src/nuget-package.props" />
@@ -22,13 +23,49 @@
   </PropertyGroup>
   
   <ItemGroup>
-    <None Remove="Controls\AILogo\AILogo.xaml" />
+    <Content Remove="Assets\**\*" />
   </ItemGroup>
   
   <ItemGroup>
+    <None Remove="AILogo\AILogo.xaml" />
+    <None Remove="ChatModelCard\ChatModelCard.xaml" />
+    <None Remove="CustomChatModelDialog.xaml" />
+    <None Remove="CustomChatModelSection.xaml" />
+    <None Remove="PredefinedChatModelSection.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+  	<None Include="Assets\**\*">
+  		<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+  	</None>
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" />
     <PackageReference Include="Microsoft.WindowsAppSDK" />
-	<PackageReference Include="Microsoft.Windows.CsWinRT" />
+    <PackageReference Include="Richasy.AgentKernel.Connectors.Ali" />
+    <PackageReference Include="Richasy.AgentKernel.Connectors.Anthropic" />
+    <PackageReference Include="Richasy.AgentKernel.Connectors.Azure" />
+    <PackageReference Include="Richasy.AgentKernel.Connectors.Baidu" />
+    <PackageReference Include="Richasy.AgentKernel.Connectors.DeepSeek" />
+    <PackageReference Include="Richasy.AgentKernel.Connectors.Google" />
+    <PackageReference Include="Richasy.AgentKernel.Connectors.Groq" />
+    <PackageReference Include="Richasy.AgentKernel.Connectors.IFlyTek" />
+    <PackageReference Include="Richasy.AgentKernel.Connectors.LingYi" />
+    <PackageReference Include="Richasy.AgentKernel.Connectors.Mistral" />
+    <PackageReference Include="Richasy.AgentKernel.Connectors.Moonshot" />
+    <PackageReference Include="Richasy.AgentKernel.Connectors.Ollama" />
+    <PackageReference Include="Richasy.AgentKernel.Connectors.OpenAI" />
+    <PackageReference Include="Richasy.AgentKernel.Connectors.OpenRouter" />
+    <PackageReference Include="Richasy.AgentKernel.Connectors.Perplexity" />
+    <PackageReference Include="Richasy.AgentKernel.Connectors.SiliconFlow" />
+    <PackageReference Include="Richasy.AgentKernel.Connectors.Tencent" />
+    <PackageReference Include="Richasy.AgentKernel.Connectors.TogetherAI" />
+    <PackageReference Include="Richasy.AgentKernel.Connectors.Volcano" />
+    <PackageReference Include="Richasy.AgentKernel.Connectors.XAI" />
+    <PackageReference Include="Richasy.AgentKernel.Connectors.Youdao" />
+    <PackageReference Include="Richasy.AgentKernel.Connectors.ZhiPu" />
+    <PackageReference Include="Richasy.AgentKernel.Core" />
+    <PackageReference Include="Richasy.AgentKernel.Definitions" />
   </ItemGroup>
   
   <ItemGroup>
@@ -36,9 +73,32 @@
   </ItemGroup>
   
   <ItemGroup>
-    <Page Update="Controls\AILogo\AILogo.xaml">
+    <Page Update="PredefinedChatModelSection.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   
+  <ItemGroup>
+    <Page Update="CustomChatModelDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Page Update="ChatModelCard\ChatModelCard.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Page Update="CustomChatModelSection.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+  	<Page Update="AILogo\AILogo.xaml">
+  		<Generator>MSBuild:Compile</Generator>
+  	</Page>
+  </ItemGroup>
 </Project>

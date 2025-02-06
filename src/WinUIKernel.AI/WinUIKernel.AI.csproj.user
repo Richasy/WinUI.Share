@@ -2,7 +2,22 @@
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup />
   <ItemGroup>
-    <Page Update="Controls\AILogo\AILogo.xaml">
+    <Page Update="PredefinedChatModelSection.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="CustomChatModelDialog.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="ChatModelCard\ChatModelCard.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="CustomChatModelSection.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

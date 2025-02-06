@@ -3,15 +3,18 @@
     x:Class="AISample.TestPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:ai="using:Richasy.WinUIKernel.AI.Controls"
-    xmlns:base="using:Richasy.WinUIKernel.Share.Base"
+    xmlns:ai="using:Richasy.WinUIKernel.AI"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:AISample"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <StackPanel>
-        <base:ColumnSplitter />
-        <ai:AILogo Provider="OpenAI" />
+    <StackPanel Padding="40">
+        <ai:AILogo Height="20" Provider="OpenAI" />
+        <ai:AILogo
+            Width="40"
+            Height="40"
+            IsAvatar="True"
+            Provider="Ernie" />
     </StackPanel>
 </Page>
