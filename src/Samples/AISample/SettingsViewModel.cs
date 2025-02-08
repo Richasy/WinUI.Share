@@ -42,6 +42,21 @@ public sealed partial class SettingsViewModel : AISettingsViewModelBase
     }
 
     /// <inheritdoc/>
+    public override async Task InitializeDrawServicesAsync()
+    {
+        await base.InitializeDrawServicesAsync();
+        if (DrawServices.Count > 0)
+        {
+            return;
+        }
+
+        foreach (var provider in Enum.GetValues<DrawProviderType>())
+        {
+            DrawServices.Add(new DrawServiceItemViewModel(provider));
+        }
+    }
+
+    /// <inheritdoc/>
     protected override async Task SaveChatServicesAsync()
     {
         await base.SaveChatServicesAsync();
@@ -57,5 +72,14 @@ public sealed partial class SettingsViewModel : AISettingsViewModelBase
         var configManager = this.Get<IAudioConfigManager>();
         var dict = AudioServices.Where(p => p.Config != null).ToDictionary(item => item.ProviderType, item => item.Config!);
         await configManager.SaveAudioConfigAsync(dict);
+    }
+
+    /// <inheritdoc/>
+    protected override async Task SaveDrawServicesAsync()
+    {
+        await base.SaveDrawServicesAsync();
+        var configManager = this.Get<IDrawConfigManager>();
+        var dict = DrawServices.Where(p => p.Config != null).ToDictionary(item => item.ProviderType, item => item.Config!);
+        await configManager.SaveDrawConfigAsync(dict);
     }
 }

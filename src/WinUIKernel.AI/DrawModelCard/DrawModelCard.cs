@@ -7,12 +7,12 @@ using Richasy.WinUIKernel.Share.Base;
 namespace Richasy.WinUIKernel.AI;
 
 /// <summary>
-/// 音频模型卡片控件.
+/// 绘图模型卡片控件.
 /// </summary>
-public sealed partial class AudioModelCard : LayoutControlBase<AudioModelItemViewModel>
+public sealed partial class DrawModelCard : LayoutControlBase<DrawModelItemViewModel>
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="AudioModelCard"/> class.
+    /// Initializes a new instance of the <see cref="DrawModelCard"/> class.
     /// </summary>
-    public AudioModelCard() => DefaultStyleKey = typeof(AudioModelCard);
+    public DrawModelCard() => DefaultStyleKey = typeof(DrawModelCard);
 }

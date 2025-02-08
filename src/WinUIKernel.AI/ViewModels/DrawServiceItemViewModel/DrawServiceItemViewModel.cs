@@ -6,6 +6,8 @@ using Richasy.AgentKernel.Models;
 using Richasy.AgentKernel;
 using Richasy.WinUIKernel.Share.ViewModels;
 using WinRT;
+using Richasy.WinUIKernel.AI.Draw;
+using CommunityToolkit.Mvvm.Input;
 
 namespace Richasy.WinUIKernel.AI.ViewModels;
 
@@ -25,7 +27,7 @@ public sealed partial class DrawServiceItemViewModel : ViewModelBase
         Name = GetProviderName();
 
         var serverModels = WinUIKernelAIExtensions.Kernel
-            .GetRequiredService<IDrawService>()
+            .GetRequiredService<IDrawService>(providerType.ToString())
             .GetPredefinedModels();
         ServerModels.Clear();
         serverModels.ToList().ForEach(p => ServerModels.Add(new DrawModelItemViewModel(p)));
@@ -33,13 +35,19 @@ public sealed partial class DrawServiceItemViewModel : ViewModelBase
     }
 
     /// <summary>
-    /// 设置配置.
+    /// 获取设置控件.
     /// </summary>
-    /// <param name="config">配置内容.</param>
-    public void SetConfig(DrawClientConfigBase config)
+    /// <returns></returns>
+    /// <exception cref="NotImplementedException"></exception>
+    public DrawServiceConfigControlBase? GetSettingControl()
     {
-        Config = config;
-        CheckCurrentConfig();
+        return ProviderType switch
+        {
+            DrawProviderType.OpenAI => new OpenAIDrawSettingControl { ViewModel = this },
+            DrawProviderType.AzureOpenAI => new AzureOpenAIDrawSettingControl { ViewModel = this },
+            DrawProviderType.Ernie => new ErnieDrawSettingControl { ViewModel = this },
+            _ => default,
+        };
     }
 
     /// <summary>
@@ -55,6 +63,26 @@ public sealed partial class DrawServiceItemViewModel : ViewModelBase
     /// <returns>是否存在.</returns>
     public bool IsModelExist(DrawModel model)
         => ServerModels.Any(p => p.Id == model.Id);
+
+    [RelayCommand]
+    private async Task InitializeAsync()
+    {
+        var config = await this.Get<IDrawConfigManager>().GetDrawConfigAsync(ProviderType);
+        if (config != null)
+        {
+            SetConfig(config);
+        }
+    }
+
+    /// <summary>
+    /// 设置配置.
+    /// </summary>
+    /// <param name="config">配置内容.</param>
+    private void SetConfig(DrawClientConfigBase config)
+    {
+        Config = config;
+        CheckCurrentConfig();
+    }
 
     private string GetProviderName()
     {

@@ -9,6 +9,8 @@ namespace AISample;
 [JsonSourceGenerationOptions(WriteIndented = true)]
 [JsonSerializable(typeof(ChatClientConfiguration))]
 [JsonSerializable(typeof(AudioClientConfiguration))]
+[JsonSerializable(typeof(DrawClientConfiguration))]
+[JsonSerializable(typeof(TranslateClientConfiguration))]
 internal sealed partial class JsonGenContext : JsonSerializerContext
 {
 }

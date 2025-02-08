@@ -51,8 +51,15 @@ internal static class GlobalDependencies
             .AddEdgeAudioService()
             .AddWindowsAudioService()
 
+            .AddOpenAIDrawService()
+            .AddAzureOpenAIDrawService()
+            .AddErnieDrawService()
+            .AddHunyuanDrawService()
+            .AddSparkDrawService()
+
             .AddSingleton<IChatConfigManager, ChatConfigManager>()
             .AddSingleton<IAudioConfigManager, AudioConfigManager>()
+            .AddSingleton<IDrawConfigManager, DrawConfigManager>()
             .AddSingleton<ISettingsToolkit, SharedSettingsToolkit>()
             .AddSingleton<IAppToolkit, SharedAppToolkit>()
             .AddSingleton<IFileToolkit, SharedFileToolkit>()

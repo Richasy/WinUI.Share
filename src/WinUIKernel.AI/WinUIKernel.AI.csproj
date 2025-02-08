@@ -37,10 +37,15 @@
     <None Remove="Chat\EndpointChatSettingControl.xaml" />
     <None Remove="Chat\ErnieChatSettingControl.xaml" />
     <None Remove="Chat\OpenAIChatSettingControl.xaml" />
+    <None Remove="Chat\OpenAIDrawSettingControl.xaml" />
     <None Remove="CustomChatModelDialog.xaml" />
     <None Remove="CustomChatModelSection.xaml" />
+    <None Remove="DrawModelCard\DrawModelCard.xaml" />
+    <None Remove="Draw\AzureOpenAIDrawSettingControl.xaml" />
+    <None Remove="Draw\ErnieDrawSettingControl.xaml" />
     <None Remove="PredefinedAudioModelSection.xaml" />
     <None Remove="PredefinedChatModelSection.xaml" />
+    <None Remove="PredefinedDrawModelSection.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -80,6 +85,12 @@
   
   <ItemGroup>
     <ProjectReference Include="..\WinUIKernel.Share\WinUIKernel.Share.csproj" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Page Update="Draw\ErnieDrawSettingControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   
   <ItemGroup>
@@ -168,6 +179,30 @@
 
   <ItemGroup>
     <Page Update="Audio\OpenAIAudioSettingControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Draw\AzureOpenAIDrawSettingControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Chat\OpenAIDrawSettingControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="PredefinedDrawModelSection.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="DrawModelCard\DrawModelCard.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>

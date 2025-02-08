@@ -26,8 +26,10 @@ public sealed partial class TestPage : LayoutPageBase
     {
         await _settingsViewModel.InitializeChatServicesAsync();
         await _settingsViewModel.InitializeAudioServicesAsync();
+        await _settingsViewModel.InitializeDrawServicesAsync();
         await LoadChatControls();
         await LoadAudioControls();
+        await LoadDrawControls();
     }
 
     private async Task LoadChatControls()
@@ -43,7 +45,7 @@ public sealed partial class TestPage : LayoutPageBase
             }
         }
     }
-    
+
     private async Task LoadAudioControls()
     {
         foreach (var vm in _settingsViewModel.AudioServices)
@@ -53,6 +55,19 @@ public sealed partial class TestPage : LayoutPageBase
             {
                 await vm.InitializeCommand.ExecuteAsync(default);
                 AudioContainer.Children.Add(control);
+            }
+        }
+    }
+
+    private async Task LoadDrawControls()
+    {
+        foreach (var vm in _settingsViewModel.DrawServices)
+        {
+            var control = vm.GetSettingControl();
+            if (control != null)
+            {
+                await vm.InitializeCommand.ExecuteAsync(default);
+                DrawContainer.Children.Add(control);
             }
         }
     }

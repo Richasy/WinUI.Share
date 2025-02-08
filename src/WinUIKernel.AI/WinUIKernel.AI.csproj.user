@@ -2,6 +2,26 @@
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup />
   <ItemGroup>
+    <Page Update="Draw\ErnieDrawSettingControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Draw\AzureOpenAIDrawSettingControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="PredefinedDrawModelSection.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="DrawModelCard\DrawModelCard.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
     <Page Update="Audio\AzureAudioSettingControl.xaml">
       <SubType>Designer</SubType>
     </Page>
