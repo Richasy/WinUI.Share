@@ -10,6 +10,40 @@
     xmlns:vm="using:Richasy.WinUIKernel.AI.ViewModels"
     mc:Ignorable="d">
 
+    <UserControl.Resources>
+        <Style x:Key="PredefinedChatModelCardStyle" TargetType="local:ChatModelCard">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="local:ChatModelCard">
+                        <Grid
+                            Padding="16,8"
+                            Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                            CornerRadius="{StaticResource ControlCornerRadius}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <TextBlock
+                                x:Name="NameBlock"
+                                VerticalAlignment="Center"
+                                Style="{StaticResource BodyStrongTextBlockStyle}"
+                                TextTrimming="CharacterEllipsis"
+                                TextWrapping="NoWrap" />
+
+                            <TextBlock
+                                x:Name="IdBlock"
+                                Grid.Row="1"
+                                Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                Style="{StaticResource BodyTextBlockStyle}"
+                                TextTrimming="CharacterEllipsis"
+                                TextWrapping="NoWrap" />
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+
     <StackPanel Spacing="4">
         <TextBlock
             HorizontalAlignment="Left"

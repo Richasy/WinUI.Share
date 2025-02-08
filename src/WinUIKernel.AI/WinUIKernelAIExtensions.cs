@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Richasy. All rights reserved.
 // Licensed under the MIT License.
 
+using Richasy.WinUIKernel.AI.Extensions;
 using RichasyKernel;
 
 namespace Richasy.WinUIKernel.AI;
@@ -11,6 +12,8 @@ namespace Richasy.WinUIKernel.AI;
 public static class WinUIKernelAIExtensions
 {
     internal static Kernel Kernel { get; private set; }
+
+    internal static InternalResourceToolkit ResourceToolkit { get; } = new();
 
     /// <summary>
     /// Initialize the AI kernel.

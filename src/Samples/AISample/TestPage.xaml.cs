@@ -1,8 +1,6 @@
 // Copyright (c) Richasy. All rights reserved.
 // Licensed under the MIT License.
 
-using Richasy.AgentKernel;
-using Richasy.WinUIKernel.AI.Chat;
 using Richasy.WinUIKernel.Share.Base;
 
 namespace AISample;
@@ -27,24 +25,18 @@ public sealed partial class TestPage : LayoutPageBase
     protected override async void OnPageLoaded()
     {
         await _settingsViewModel.InitializeChatServicesAsync();
-        LoadChatControls();
+        await LoadChatControls();
     }
 
-    private void LoadChatControls()
+    private async Task LoadChatControls()
     {
         foreach (var vm in _settingsViewModel.ChatServices)
         {
-            var control = vm.ProviderType switch
-            {
-                ChatProviderType.AzureOpenAI => new AzureOpenAIChatSettingControl(),
-                _ => default,
-            };
+            var control = vm.GetSettingControl();
 
             if (control != null)
             {
-                control.DataContext = vm;
-                control.ViewModel = vm;
-                vm.InitializeCommand.Execute(default);
+                await vm.InitializeCommand.ExecuteAsync(default);
                 ChatContainer.Children.Add(control);
             }
         }

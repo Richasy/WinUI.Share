@@ -2,7 +2,6 @@
 // Licensed under the MIT License.
 
 using Microsoft.UI.Xaml.Markup;
-using Richasy.WinUIKernel.Share.Toolkits;
 
 namespace Richasy.WinUIKernel.Share.Extensions;
 
@@ -19,5 +18,5 @@ internal sealed partial class LocaleExtension : MarkupExtension
 
     /// <inheritdoc/>
     protected override object ProvideValue()
-        => WinUIKernelShareExtensions.Kernel.GetRequiredService<IResourceToolkit>().GetLocalizedString(Name);
+        => WinUIKernelShareExtensions.ResourceToolkit.GetLocalizedString(Name);
 }

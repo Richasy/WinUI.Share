@@ -427,6 +427,9 @@ dotnet_diagnostic.CA1515.severity = none
 # CA1416: 验证平台兼容性
 dotnet_diagnostic.CA1416.severity = none
 
+# CA1024: Use properties where appropriate
+dotnet_diagnostic.CA1024.severity = none
+
 [*.{cs,vb}]
 dotnet_style_qualification_for_field = false:silent
 dotnet_style_qualification_for_property = false:silent

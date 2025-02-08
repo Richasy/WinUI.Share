@@ -11,13 +11,15 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <StackPanel Padding="40">
-        <ai:AILogo Height="20" Provider="OpenAI" />
-        <ai:AILogo
-            Width="40"
-            Height="40"
-            IsAvatar="True"
-            Provider="Ernie" />
-        <StackPanel x:Name="ChatContainer" />
-    </StackPanel>
+    <ScrollViewer>
+        <StackPanel Padding="40">
+            <ai:AILogo Height="20" Provider="OpenAI" />
+            <ai:AILogo
+                Width="40"
+                Height="40"
+                IsAvatar="True"
+                Provider="Ernie" />
+            <StackPanel x:Name="ChatContainer" />
+        </StackPanel>
+    </ScrollViewer>
 </base:LayoutPageBase>

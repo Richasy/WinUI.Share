@@ -4,7 +4,6 @@
 using Microsoft.UI.Xaml.Controls;
 using Richasy.AgentKernel.Models;
 using Richasy.WinUIKernel.Share.Base;
-using Richasy.WinUIKernel.Share.Toolkits;
 using Richasy.WinUIKernel.Share.ViewModels;
 
 namespace Richasy.WinUIKernel.AI;
@@ -20,7 +19,7 @@ public sealed partial class CustomChatModelDialog : AppDialog
     public CustomChatModelDialog()
     {
         InitializeComponent();
-        Title = this.Get<IResourceToolkit>().GetLocalizedString("CreateCustomModel");
+        Title = WinUIKernelAIExtensions.ResourceToolkit.GetLocalizedString("CreateCustomModel");
     }
 
     /// <summary>
@@ -29,7 +28,7 @@ public sealed partial class CustomChatModelDialog : AppDialog
     public CustomChatModelDialog(ChatModel model, bool isIdEnabled = true)
         : this()
     {
-        Title = this.Get<IResourceToolkit>().GetLocalizedString("ModifyCustomModel");
+        Title = WinUIKernelAIExtensions.ResourceToolkit.GetLocalizedString("ModifyCustomModel");
         ModelNameBox.Text = model.Name;
         ModelIdBox.Text = model.Id;
         ModelIdBox.IsEnabled = isIdEnabled;
@@ -47,7 +46,7 @@ public sealed partial class CustomChatModelDialog : AppDialog
         if (string.IsNullOrEmpty(modelName) || string.IsNullOrEmpty(modelId))
         {
             args.Cancel = true;
-            this.Get<INotificationViewModel>().ShowTipCommand.Execute((this.Get<IResourceToolkit>().GetLocalizedString("ModelNameOrIdCanNotBeEmpty"), InfoType.Error));
+            this.Get<INotificationViewModel>().ShowTipCommand.Execute((WinUIKernelAIExtensions.ResourceToolkit.GetLocalizedString("ModelNameOrIdCanNotBeEmpty"), InfoType.Error));
             return;
         }
 

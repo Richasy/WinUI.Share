@@ -10,14 +10,14 @@ namespace Richasy.WinUIKernel.Share.Toolkits;
 /// <summary>
 /// 资源管理工具.
 /// </summary>
-public abstract class SharedResourceToolkit : IResourceToolkit
+public class SharedResourceToolkit : IResourceToolkit
 {
     private static ResourceLoader _loader;
 
     /// <inheritdoc/>
     public string GetLocalizedString(string stringName)
     {
-        _loader ??= GetResourceLoader();
+        _loader ??= new ResourceLoader(ResourceLoader.GetDefaultResourceFilePath(), "Resources");
         var str = _loader.GetString(stringName);
         return string.IsNullOrEmpty(str) ? stringName : str;
     }
@@ -25,9 +25,4 @@ public abstract class SharedResourceToolkit : IResourceToolkit
     /// <inheritdoc/>
     public Brush GetThemeBrush(string brushName)
         => (Application.Current.Resources[brushName] as Brush)!;
-
-    /// <summary>
-    /// 获取资源加载器.
-    /// </summary>
-    protected abstract ResourceLoader GetResourceLoader();
 }

@@ -20,7 +20,10 @@ public sealed partial class SettingsViewModel : AISettingsViewModelBase
             return;
         }
 
-        ChatServices.Add(new ChatServiceItemViewModel(ChatProviderType.AzureOpenAI));
+        foreach (var provider in Enum.GetValues<ChatProviderType>())
+        {
+            ChatServices.Add(new ChatServiceItemViewModel(provider));
+        }
     }
 
     /// <inheritdoc/>

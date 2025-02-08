@@ -6,8 +6,8 @@ using Microsoft.UI.Xaml.Controls;
 using Richasy.AgentKernel;
 using Richasy.AgentKernel.Chat;
 using Richasy.AgentKernel.Models;
+using Richasy.WinUIKernel.AI.Chat;
 using Richasy.WinUIKernel.Share.Base;
-using Richasy.WinUIKernel.Share.Toolkits;
 using Richasy.WinUIKernel.Share.ViewModels;
 using WinRT;
 
@@ -70,6 +70,41 @@ public partial class ChatServiceItemViewModel : ViewModelBase
     }
 
     /// <summary>
+    /// 获取设置控件.
+    /// </summary>
+    /// <returns></returns>
+    /// <exception cref="NotImplementedException"></exception>
+    public ChatServiceConfigControlBase GetSettingControl()
+    {
+        return ProviderType switch
+        {
+            ChatProviderType.Moonshot
+                or ChatProviderType.ZhiPu
+                or ChatProviderType.LingYi
+                or ChatProviderType.DeepSeek
+                or ChatProviderType.OpenRouter
+                or ChatProviderType.Groq
+                or ChatProviderType.Mistral
+                or ChatProviderType.TogetherAI
+                or ChatProviderType.Perplexity
+                or ChatProviderType.SiliconFlow
+                or ChatProviderType.Hunyuan
+                or ChatProviderType.Spark
+                or ChatProviderType.XAI
+                or ChatProviderType.Doubao
+                or ChatProviderType.Qwen => new BasicChatSettingControl { ViewModel = this },
+            ChatProviderType.Anthropic
+                or ChatProviderType.Ollama
+                or ChatProviderType.AzureAI
+                or ChatProviderType.Gemini => new EndpointChatSettingControl { ViewModel = this },
+            ChatProviderType.AzureOpenAI => new AzureOpenAIChatSettingControl { ViewModel = this },
+            ChatProviderType.OpenAI => new OpenAIChatSettingControl { ViewModel = this },
+            ChatProviderType.Ernie => new ErnieChatSettingControl { ViewModel = this },
+            _ => throw new NotImplementedException(),
+        };
+    }
+
+    /// <summary>
     /// 创建自定义模型.
     /// </summary>
     /// <returns><see cref="Task"/>.</returns>
@@ -89,7 +124,7 @@ public partial class ChatServiceItemViewModel : ViewModelBase
             if (IsModelExist(model))
             {
                 this.Get<INotificationViewModel>()
-                    .ShowTipCommand.Execute((this.Get<IResourceToolkit>().GetLocalizedString("ModelAlreadyExist"), InfoType.Error));
+                    .ShowTipCommand.Execute((WinUIKernelAIExtensions.ResourceToolkit.GetLocalizedString("ModelAlreadyExist"), InfoType.Error));
                 return;
             }
 
@@ -101,7 +136,10 @@ public partial class ChatServiceItemViewModel : ViewModelBase
     private async Task InitializeAsync()
     {
         var config = await this.Get<IChatConfigManager>().GetChatConfigAsync(ProviderType);
-        SetConfig(config);
+        if (config != null)
+        {
+            SetConfig(config);
+        }
     }
 
     /// <summary>

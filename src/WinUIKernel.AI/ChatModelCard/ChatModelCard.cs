@@ -4,7 +4,6 @@
 using Microsoft.UI.Xaml.Controls;
 using Richasy.WinUIKernel.AI.ViewModels;
 using Richasy.WinUIKernel.Share.Base;
-using Richasy.WinUIKernel.Share.Toolkits;
 using System.ComponentModel;
 
 namespace Richasy.WinUIKernel.AI;
@@ -108,7 +107,7 @@ public sealed partial class ChatModelCard : LayoutControlBase<ChatModelItemViewM
     private MenuFlyout CreateMoreFlyout()
     {
         var flyout = new MenuFlyout();
-        var resourceToolkit = WinUIKernelAIExtensions.Kernel.GetRequiredService<IResourceToolkit>();
+        var resourceToolkit = WinUIKernelAIExtensions.ResourceToolkit;
         flyout.Items.Add(new MenuFlyoutItem
         {
             Text = resourceToolkit.GetLocalizedString("Edit"),

@@ -30,6 +30,10 @@
     <None Remove="AILogo\AILogo.xaml" />
     <None Remove="ChatModelCard\ChatModelCard.xaml" />
     <None Remove="Chat\AzureOpenAIChatSettingControl.xaml" />
+    <None Remove="Chat\BasicChatSettingControl.xaml" />
+    <None Remove="Chat\EndpointChatSettingControl.xaml" />
+    <None Remove="Chat\ErnieChatSettingControl.xaml" />
+    <None Remove="Chat\OpenAIChatSettingControl.xaml" />
     <None Remove="CustomChatModelDialog.xaml" />
     <None Remove="CustomChatModelSection.xaml" />
     <None Remove="PredefinedChatModelSection.xaml" />
@@ -71,6 +75,30 @@
   
   <ItemGroup>
     <ProjectReference Include="..\WinUIKernel.Share\WinUIKernel.Share.csproj" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Page Update="Chat\ErnieChatSettingControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Page Update="Chat\EndpointChatSettingControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Page Update="Chat\OpenAIChatSettingControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Page Update="Chat\BasicChatSettingControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   
   <ItemGroup>

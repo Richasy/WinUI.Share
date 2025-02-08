@@ -15,7 +15,7 @@ internal static class Utils
         {
             case "anthropic":
                 return new SolidColorBrush("#F1F0E8".ToColor());
-            case "azureopenai":
+            case "azureopenai" or "azureai" or "xai":
                 return new SolidColorBrush("#FFFFFF".ToColor());
             case "qwen":
                 return new LinearGradientBrush
