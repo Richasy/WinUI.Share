@@ -8,43 +8,35 @@ using System.Collections.ObjectModel;
 namespace Richasy.WinUIKernel.AI.ViewModels;
 
 /// <summary>
-/// AI服务项目视图模型.
+/// 音频服务项目视图模型.
 /// </summary>
-public sealed partial class ChatServiceItemViewModel
+public sealed partial class AudioServiceItemViewModel
 {
     [ObservableProperty]
     private string _name;
 
     [ObservableProperty]
-    private ChatProviderType _providerType;
+    private AudioProviderType _providerType;
 
     [ObservableProperty]
     private bool _isCompleted;
 
     [ObservableProperty]
-    private ChatClientConfigBase _config;
+    private AudioClientConfigBase? _config;
 
     [ObservableProperty]
     private bool _isServerModelVisible;
 
     [ObservableProperty]
-    private bool _isCustomModelsEmpty;
-
-    [ObservableProperty]
     private bool _isSelected;
-
-    /// <summary>
-    /// 自定义模型.
-    /// </summary>
-    public ObservableCollection<ChatModelItemViewModel> CustomModels { get; } = [];
 
     /// <summary>
     /// 服务模型.
     /// </summary>
-    public ObservableCollection<ChatModelItemViewModel> ServerModels { get; } = [];
+    public ObservableCollection<AudioModelItemViewModel> ServerModels { get; } = [];
 
     /// <inheritdoc/>
-    public override bool Equals(object? obj) => obj is ChatServiceItemViewModel model && ProviderType == model.ProviderType;
+    public override bool Equals(object? obj) => obj is AudioServiceItemViewModel model && ProviderType == model.ProviderType;
 
     /// <inheritdoc/>
     public override int GetHashCode() => HashCode.Combine(ProviderType);

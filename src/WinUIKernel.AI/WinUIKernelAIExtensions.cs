@@ -18,5 +18,5 @@ public static class WinUIKernelAIExtensions
     /// <param name="kernel">Kernel.</param>
     public static void InitializeAIKernel(this Kernel kernel) => Kernel = kernel;
 
-    internal static T Get<T>(this object ele) where T : class => Kernel.Get<T>();
+    internal static T Get<T>(this object ele) where T : class => Kernel.GetRequiredService<T>();
 }

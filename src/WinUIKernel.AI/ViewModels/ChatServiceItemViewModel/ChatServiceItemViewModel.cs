@@ -29,29 +29,12 @@ public partial class ChatServiceItemViewModel : ViewModelBase
         Name = GetProviderName();
 
         var serverModels = WinUIKernelAIExtensions.Kernel
-            .GetRequiredService<IChatService>()
+            .GetRequiredService<IChatService>(providerType.ToString())
             .GetPredefinedModels();
         ServerModels.Clear();
         serverModels.ToList().ForEach(p => ServerModels.Add(new ChatModelItemViewModel(p)));
         IsServerModelVisible = ServerModels.Count > 0;
         CheckCustomModelsCount();
-    }
-
-    /// <summary>
-    /// 设置配置.
-    /// </summary>
-    /// <param name="config">配置内容.</param>
-    public void SetConfig(ChatClientConfigBase config)
-    {
-        Config = config;
-        if (config?.IsCustomModelNotEmpty() ?? false)
-        {
-            CustomModels.Clear();
-            config.CustomModels.ToList().ForEach(p => CustomModels.Add(new ChatModelItemViewModel(p, DeleteCustomModel)));
-            CheckCustomModelsCount();
-        }
-
-        CheckCurrentConfig();
     }
 
     /// <summary>
@@ -112,6 +95,30 @@ public partial class ChatServiceItemViewModel : ViewModelBase
 
             AddCustomModel(model);
         }
+    }
+
+    [RelayCommand]
+    private async Task InitializeAsync()
+    {
+        var config = await this.Get<IChatConfigManager>().GetChatConfigAsync(ProviderType);
+        SetConfig(config);
+    }
+
+    /// <summary>
+    /// 设置配置.
+    /// </summary>
+    /// <param name="config">配置内容.</param>
+    private void SetConfig(ChatClientConfigBase config)
+    {
+        Config = config;
+        if (config?.IsCustomModelNotEmpty() ?? false)
+        {
+            CustomModels.Clear();
+            config.CustomModels.ToList().ForEach(p => CustomModels.Add(new ChatModelItemViewModel(p, DeleteCustomModel)));
+            CheckCustomModelsCount();
+        }
+
+        CheckCurrentConfig();
     }
 
     private void DeleteCustomModel(ChatModelItemViewModel model)

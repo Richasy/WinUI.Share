@@ -12,7 +12,7 @@ namespace Richasy.WinUIKernel.AI;
 /// <summary>
 /// Custom chat model dialog.
 /// </summary>
-public sealed partial class CustomChatModelDialog : ContentDialog
+public sealed partial class CustomChatModelDialog : AppDialog
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="CustomChatModelDialog"/> class.
@@ -21,7 +21,6 @@ public sealed partial class CustomChatModelDialog : ContentDialog
     {
         InitializeComponent();
         Title = this.Get<IResourceToolkit>().GetLocalizedString("CreateCustomModel");
-        this.Get<IAppToolkit>().ResetControlTheme(this);
     }
 
     /// <summary>

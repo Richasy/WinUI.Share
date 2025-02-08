@@ -29,6 +29,7 @@
   <ItemGroup>
     <None Remove="AILogo\AILogo.xaml" />
     <None Remove="ChatModelCard\ChatModelCard.xaml" />
+    <None Remove="Chat\AzureOpenAIChatSettingControl.xaml" />
     <None Remove="CustomChatModelDialog.xaml" />
     <None Remove="CustomChatModelSection.xaml" />
     <None Remove="PredefinedChatModelSection.xaml" />
@@ -100,5 +101,11 @@
   	<Page Update="AILogo\AILogo.xaml">
   		<Generator>MSBuild:Compile</Generator>
   	</Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Chat\AzureOpenAIChatSettingControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
 </Project>

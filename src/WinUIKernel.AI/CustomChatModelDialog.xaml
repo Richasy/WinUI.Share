@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentDialog
+<base:AppDialog
     x:Class="Richasy.WinUIKernel.AI.CustomChatModelDialog"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -19,7 +19,7 @@
         <TextBox
             x:Name="ModelNameBox"
             HorizontalAlignment="Stretch"
-            PlaceholderText="{ext:Locale Name=ModelNamePlaceholder}">
+            PlaceholderText="{ext:Locale Name=ChatModelNamePlaceholder}">
             <TextBox.Header>
                 <base:TipHeader Title="{ext:Locale Name=ModelName}" Comment="{ext:Locale Name=ModelNameDescription}" />
             </TextBox.Header>
@@ -27,10 +27,10 @@
         <TextBox
             x:Name="ModelIdBox"
             HorizontalAlignment="Stretch"
-            PlaceholderText="{ext:Locale Name=ModelIdPlaceholder}">
+            PlaceholderText="{ext:Locale Name=ChatModelIdPlaceholder}">
             <TextBox.Header>
                 <base:TipHeader Title="{ext:Locale Name=ModelId}" Comment="{ext:Locale Name=ModelIdDescription}" />
             </TextBox.Header>
         </TextBox>
     </StackPanel>
-</ContentDialog>
+</base:AppDialog>
