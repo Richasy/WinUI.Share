@@ -6,6 +6,8 @@ using Richasy.WinUIKernel.Share.ViewModels;
 using WinRT;
 using Richasy.AgentKernel.Models;
 using Richasy.AgentKernel.Audio;
+using CommunityToolkit.Mvvm.Input;
+using Richasy.WinUIKernel.AI.Audio;
 
 namespace Richasy.WinUIKernel.AI.ViewModels;
 
@@ -25,7 +27,7 @@ public sealed partial class AudioServiceItemViewModel : ViewModelBase
         Name = GetProviderName();
 
         var serverModels = WinUIKernelAIExtensions.Kernel
-            .GetRequiredService<IAudioService>()
+            .GetRequiredService<IAudioService>(providerType.ToString())
             .GetPredefinedModels();
         ServerModels.Clear();
         serverModels.ToList().ForEach(p => ServerModels.Add(new AudioModelItemViewModel(p)));
@@ -33,13 +35,19 @@ public sealed partial class AudioServiceItemViewModel : ViewModelBase
     }
 
     /// <summary>
-    /// 设置配置.
+    /// 获取设置控件.
     /// </summary>
-    /// <param name="config">配置内容.</param>
-    public void SetConfig(AudioClientConfigBase config)
+    /// <returns></returns>
+    /// <exception cref="NotImplementedException"></exception>
+    public AudioServiceConfigControlBase? GetSettingControl()
     {
-        Config = config;
-        CheckCurrentConfig();
+        return ProviderType switch
+        {
+            AudioProviderType.OpenAI => new OpenAIAudioSettingControl { ViewModel = this },
+            AudioProviderType.AzureOpenAI => new AzureOpenAIAudioSettingControl { ViewModel = this },
+            AudioProviderType.Azure => new AzureAudioSettingControl { ViewModel = this },
+            _ => default,
+        };
     }
 
     /// <summary>
@@ -55,6 +63,26 @@ public sealed partial class AudioServiceItemViewModel : ViewModelBase
     /// <returns>是否存在.</returns>
     public bool IsModelExist(AudioModel model)
         => ServerModels.Any(p => p.Id == model.Id);
+
+    [RelayCommand]
+    private async Task InitializeAsync()
+    {
+        var config = await this.Get<IAudioConfigManager>().GetAudioConfigAsync(ProviderType);
+        if (config != null)
+        {
+            SetConfig(config);
+        }
+    }
+
+    /// <summary>
+    /// 设置配置.
+    /// </summary>
+    /// <param name="config">配置内容.</param>
+    private void SetConfig(AudioClientConfigBase config)
+    {
+        Config = config;
+        CheckCurrentConfig();
+    }
 
     private string GetProviderName()
     {

@@ -1,34 +1,35 @@
 // Copyright (c) Richasy. All rights reserved.
 // Licensed under the MIT License.
 
+using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml;
 using Richasy.AgentKernel;
 
-namespace Richasy.WinUIKernel.AI.Chat;
+namespace Richasy.WinUIKernel.AI.Audio;
 
 /// <summary>
-/// Azure OpenAI聊天设置控件.
+/// Azure OpenAI 音频服务配置控件.
 /// </summary>
-public sealed partial class AzureOpenAIChatSettingControl : ChatServiceConfigControlBase
+public sealed partial class AzureOpenAIAudioSettingControl : AudioServiceConfigControlBase
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="AzureOpenAIChatSettingControl"/> class.
+    /// Initializes a new instance of the <see cref="AzureOpenAIAudioSettingControl"/> class.
     /// </summary>
-    public AzureOpenAIChatSettingControl() => InitializeComponent();
+    public AzureOpenAIAudioSettingControl() => InitializeComponent();
 
     /// <inheritdoc/>
     protected override void OnControlLoaded()
     {
         Logo.Provider = ViewModel.ProviderType.ToString();
-        ViewModel.Config ??= new AzureOpenAIChatConfig();
+        ViewModel.Config ??= new AzureOpenAIAudioConfig();
         ViewModel.CheckCurrentConfig();
     }
 
     private void OnKeyBoxLoaded(object sender, RoutedEventArgs e)
     {
         KeyBox.Password = ViewModel.Config?.Key ?? string.Empty;
-        EndpointBox.Text = (ViewModel.Config as AzureOpenAIChatConfig)?.Endpoint ?? string.Empty;
+        EndpointBox.Text = (ViewModel.Config as AzureOpenAIAudioConfig)?.Endpoint ?? string.Empty;
         KeyBox.Focus(FocusState.Programmatic);
     }
 
@@ -40,7 +41,10 @@ public sealed partial class AzureOpenAIChatSettingControl : ChatServiceConfigCon
 
     private void OnEndpointBoxTextChanged(object sender, TextChangedEventArgs e)
     {
-        ((AzureOpenAIChatConfig)ViewModel.Config).Endpoint = EndpointBox.Text;
+        ((AzureOpenAIAudioConfig)ViewModel.Config).Endpoint = EndpointBox.Text;
         ViewModel.CheckCurrentConfig();
     }
+
+    private void OnPredefinedModelsButtonClick(object sender, RoutedEventArgs e)
+        => FlyoutBase.ShowAttachedFlyout(sender as FrameworkElement);
 }

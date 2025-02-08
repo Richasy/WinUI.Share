@@ -144,6 +144,12 @@
   <data name="AzureOpenAIEndpointDescription" xml:space="preserve">
     <value>在 Azure 门户相应资源的 "密钥与终结点" 中找到此值</value>
   </data>
+  <data name="AzureRegionDescription" xml:space="preserve">
+    <value>在 Azure 门户相应资源的 "密钥与终结点" 中找到此值</value>
+  </data>
+  <data name="AzureSpeechAccessKeyDescription" xml:space="preserve">
+    <value>在 Azure 门户相应资源的 "密钥与终结点" 中找到此值，可用 KEY1 或 KEY2</value>
+  </data>
   <data name="Cancel" xml:space="preserve">
     <value>取消</value>
   </data>
@@ -218,6 +224,12 @@
   </data>
   <data name="PredefinedModelsDescription" xml:space="preserve">
     <value>查看 {0} 的内置模型列表</value>
+  </data>
+  <data name="Region" xml:space="preserve">
+    <value>位置/区域</value>
+  </data>
+  <data name="RegionPlaceholderText" xml:space="preserve">
+    <value>服务所在地区</value>
   </data>
   <data name="SecretId" xml:space="preserve">
     <value>密文 ID（Secret ID）</value>

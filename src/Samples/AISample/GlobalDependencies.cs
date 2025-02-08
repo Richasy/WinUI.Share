@@ -45,7 +45,14 @@ internal static class GlobalDependencies
             .AddMistralChatService()
             .AddPerplexityChatService()
 
+            .AddOpenAIAudioService()
+            .AddAzureOpenAIAudioService()
+            .AddAzureAudioService()
+            .AddEdgeAudioService()
+            .AddWindowsAudioService()
+
             .AddSingleton<IChatConfigManager, ChatConfigManager>()
+            .AddSingleton<IAudioConfigManager, AudioConfigManager>()
             .AddSingleton<ISettingsToolkit, SharedSettingsToolkit>()
             .AddSingleton<IAppToolkit, SharedAppToolkit>()
             .AddSingleton<IFileToolkit, SharedFileToolkit>()

@@ -46,6 +46,14 @@
     <ProjectReference Include="..\..\WinUIKernel.AI\WinUIKernel.AI.csproj" />
   </ItemGroup>
   <ItemGroup>
+    <None Update="AzureVoiceList.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="EdgeVoiceList.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
     <Page Update="TestPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -25,7 +25,9 @@ public sealed partial class TestPage : LayoutPageBase
     protected override async void OnPageLoaded()
     {
         await _settingsViewModel.InitializeChatServicesAsync();
+        await _settingsViewModel.InitializeAudioServicesAsync();
         await LoadChatControls();
+        await LoadAudioControls();
     }
 
     private async Task LoadChatControls()
@@ -38,6 +40,19 @@ public sealed partial class TestPage : LayoutPageBase
             {
                 await vm.InitializeCommand.ExecuteAsync(default);
                 ChatContainer.Children.Add(control);
+            }
+        }
+    }
+    
+    private async Task LoadAudioControls()
+    {
+        foreach (var vm in _settingsViewModel.AudioServices)
+        {
+            var control = vm.GetSettingControl();
+            if (control != null)
+            {
+                await vm.InitializeCommand.ExecuteAsync(default);
+                AudioContainer.Children.Add(control);
             }
         }
     }

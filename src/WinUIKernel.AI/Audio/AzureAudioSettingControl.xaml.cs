@@ -1,34 +1,33 @@
 // Copyright (c) Richasy. All rights reserved.
 // Licensed under the MIT License.
 
-using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
 using Richasy.AgentKernel;
 
-namespace Richasy.WinUIKernel.AI.Chat;
+namespace Richasy.WinUIKernel.AI.Audio;
 
 /// <summary>
-/// Azure OpenAI聊天设置控件.
+/// Azure语音服务音频设置控件.
 /// </summary>
-public sealed partial class AzureOpenAIChatSettingControl : ChatServiceConfigControlBase
+public sealed partial class AzureAudioSettingControl : AudioServiceConfigControlBase
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="AzureOpenAIChatSettingControl"/> class.
+    /// Initializes a new instance of the <see cref="AzureAudioSettingControl"/> class.
     /// </summary>
-    public AzureOpenAIChatSettingControl() => InitializeComponent();
+    public AzureAudioSettingControl() => InitializeComponent();
 
     /// <inheritdoc/>
     protected override void OnControlLoaded()
     {
-        Logo.Provider = ViewModel.ProviderType.ToString();
-        ViewModel.Config ??= new AzureOpenAIChatConfig();
+        ViewModel.Config ??= new AzureAudioConfig();
         ViewModel.CheckCurrentConfig();
     }
 
     private void OnKeyBoxLoaded(object sender, RoutedEventArgs e)
     {
         KeyBox.Password = ViewModel.Config?.Key ?? string.Empty;
-        EndpointBox.Text = (ViewModel.Config as AzureOpenAIChatConfig)?.Endpoint ?? string.Empty;
+        RegionBox.Text = (ViewModel.Config as AzureAudioConfig)?.Region ?? string.Empty;
         KeyBox.Focus(FocusState.Programmatic);
     }
 
@@ -38,9 +37,9 @@ public sealed partial class AzureOpenAIChatSettingControl : ChatServiceConfigCon
         ViewModel.CheckCurrentConfig();
     }
 
-    private void OnEndpointBoxTextChanged(object sender, TextChangedEventArgs e)
+    private void OnRegionBoxTextChanged(object sender, TextChangedEventArgs e)
     {
-        ((AzureOpenAIChatConfig)ViewModel.Config).Endpoint = EndpointBox.Text;
+        ((AzureAudioConfig)ViewModel.Config).Region = RegionBox.Text;
         ViewModel.CheckCurrentConfig();
     }
 }

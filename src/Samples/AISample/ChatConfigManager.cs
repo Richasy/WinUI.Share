@@ -84,7 +84,7 @@ public sealed class ChatConfigManager : ChatConfigManagerBase
     }
 }
 
-internal static class ChatConfigExtensions
+internal static partial class ConfigExtensions
 {
     public static AIServiceConfig ToAIServiceConfig(this OpenAIChatConfig? config)
     {

@@ -12,14 +12,20 @@
     mc:Ignorable="d">
 
     <ScrollViewer>
-        <StackPanel Padding="40">
-            <ai:AILogo Height="20" Provider="OpenAI" />
-            <ai:AILogo
-                Width="40"
-                Height="40"
-                IsAvatar="True"
-                Provider="Ernie" />
-            <StackPanel x:Name="ChatContainer" />
+        <StackPanel Padding="40" Spacing="20">
+            <StackPanel.ChildrenTransitions>
+                <RepositionThemeTransition IsStaggeringEnabled="False" />
+            </StackPanel.ChildrenTransitions>
+            <StackPanel x:Name="ChatContainer">
+                <StackPanel.ChildrenTransitions>
+                    <RepositionThemeTransition IsStaggeringEnabled="False" />
+                </StackPanel.ChildrenTransitions>
+            </StackPanel>
+            <StackPanel x:Name="AudioContainer">
+                <StackPanel.ChildrenTransitions>
+                    <RepositionThemeTransition IsStaggeringEnabled="False" />
+                </StackPanel.ChildrenTransitions>
+            </StackPanel>
         </StackPanel>
     </ScrollViewer>
 </base:LayoutPageBase>

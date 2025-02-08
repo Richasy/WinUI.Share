@@ -6,5 +6,6 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="ms-appx:///Richasy.WinUIKernel.AI/AILogo/AILogo.xaml" />
         <ResourceDictionary Source="ms-appx:///Richasy.WinUIKernel.AI/ChatModelCard/ChatModelCard.xaml" />
+        <ResourceDictionary Source="ms-appx:///Richasy.WinUIKernel.AI/AudioModelCard/AudioModelCard.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

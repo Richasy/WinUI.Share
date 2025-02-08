@@ -28,6 +28,9 @@
   
   <ItemGroup>
     <None Remove="AILogo\AILogo.xaml" />
+    <None Remove="AudioModelCard\AudioModelCard.xaml" />
+    <None Remove="Audio\AzureOpenAIAudioSettingControl.xaml" />
+    <None Remove="Audio\OpenAIAudioSettingControl.xaml" />
     <None Remove="ChatModelCard\ChatModelCard.xaml" />
     <None Remove="Chat\AzureOpenAIChatSettingControl.xaml" />
     <None Remove="Chat\BasicChatSettingControl.xaml" />
@@ -36,6 +39,7 @@
     <None Remove="Chat\OpenAIChatSettingControl.xaml" />
     <None Remove="CustomChatModelDialog.xaml" />
     <None Remove="CustomChatModelSection.xaml" />
+    <None Remove="PredefinedAudioModelSection.xaml" />
     <None Remove="PredefinedChatModelSection.xaml" />
   </ItemGroup>
 
@@ -66,6 +70,7 @@
     <PackageReference Include="Richasy.AgentKernel.Connectors.Tencent" />
     <PackageReference Include="Richasy.AgentKernel.Connectors.TogetherAI" />
     <PackageReference Include="Richasy.AgentKernel.Connectors.Volcano" />
+    <PackageReference Include="Richasy.AgentKernel.Connectors.Windows" />
     <PackageReference Include="Richasy.AgentKernel.Connectors.XAI" />
     <PackageReference Include="Richasy.AgentKernel.Connectors.Youdao" />
     <PackageReference Include="Richasy.AgentKernel.Connectors.ZhiPu" />
@@ -75,6 +80,30 @@
   
   <ItemGroup>
     <ProjectReference Include="..\WinUIKernel.Share\WinUIKernel.Share.csproj" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Page Update="Audio\AzureAudioSettingControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Page Update="Audio\AzureOpenAIAudioSettingControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Page Update="AudioModelCard\AudioModelCard.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Page Update="PredefinedAudioModelSection.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   
   <ItemGroup>
@@ -133,6 +162,12 @@
 
   <ItemGroup>
     <Page Update="Chat\AzureOpenAIChatSettingControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Audio\OpenAIAudioSettingControl.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
