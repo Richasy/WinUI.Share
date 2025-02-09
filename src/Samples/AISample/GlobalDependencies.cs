@@ -57,9 +57,18 @@ internal static class GlobalDependencies
             .AddHunyuanDrawService()
             .AddSparkDrawService()
 
+            .AddAliTranslationService()
+            .AddAzureTranslationService()
+            .AddBaiduTranslationService()
+            .AddGoogleTranslationService()
+            .AddTencentTranslationService()
+            .AddYoudaoTranslationService()
+            .AddVolcanoTranslationService()
+
             .AddSingleton<IChatConfigManager, ChatConfigManager>()
             .AddSingleton<IAudioConfigManager, AudioConfigManager>()
             .AddSingleton<IDrawConfigManager, DrawConfigManager>()
+            .AddSingleton<ITranslateConfigManager, TranslateConfigManager>()
             .AddSingleton<ISettingsToolkit, SharedSettingsToolkit>()
             .AddSingleton<IAppToolkit, SharedAppToolkit>()
             .AddSingleton<IFileToolkit, SharedFileToolkit>()

@@ -31,7 +31,7 @@ public sealed partial class DrawServiceItemViewModel : ViewModelBase
             .GetPredefinedModels();
         ServerModels.Clear();
         serverModels.ToList().ForEach(p => ServerModels.Add(new DrawModelItemViewModel(p)));
-        IsServerModelVisible = ServerModels.Count > 1;
+        IsServerModelVisible = ServerModels.Count > 0;
     }
 
     /// <summary>
@@ -46,6 +46,8 @@ public sealed partial class DrawServiceItemViewModel : ViewModelBase
             DrawProviderType.OpenAI => new OpenAIDrawSettingControl { ViewModel = this },
             DrawProviderType.AzureOpenAI => new AzureOpenAIDrawSettingControl { ViewModel = this },
             DrawProviderType.Ernie => new ErnieDrawSettingControl { ViewModel = this },
+            DrawProviderType.Hunyuan => new HunyuanDrawSettingControl { ViewModel = this },
+            DrawProviderType.Spark => new SparkDrawSettingControl { ViewModel = this },
             _ => default,
         };
     }

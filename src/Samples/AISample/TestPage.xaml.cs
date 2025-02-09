@@ -27,9 +27,11 @@ public sealed partial class TestPage : LayoutPageBase
         await _settingsViewModel.InitializeChatServicesAsync();
         await _settingsViewModel.InitializeAudioServicesAsync();
         await _settingsViewModel.InitializeDrawServicesAsync();
+        await _settingsViewModel.InitializeTranslateServicesAsync();
         await LoadChatControls();
         await LoadAudioControls();
         await LoadDrawControls();
+        await LoadTranslateControls();
     }
 
     private async Task LoadChatControls()
@@ -68,6 +70,19 @@ public sealed partial class TestPage : LayoutPageBase
             {
                 await vm.InitializeCommand.ExecuteAsync(default);
                 DrawContainer.Children.Add(control);
+            }
+        }
+    }
+
+    private async Task LoadTranslateControls()
+    {
+        foreach (var vm in _settingsViewModel.TranslateServices)
+        {
+            var control = vm.GetSettingControl();
+            if (control != null)
+            {
+                await vm.InitializeCommand.ExecuteAsync(default);
+                TranslateContainer.Children.Add(control);
             }
         }
     }
