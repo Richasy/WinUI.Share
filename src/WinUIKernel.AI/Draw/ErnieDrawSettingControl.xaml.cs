@@ -26,7 +26,7 @@ public sealed partial class ErnieDrawSettingControl : DrawServiceConfigControlBa
         KeyBox.PlaceholderText = string.Format(resourceToolkit.GetLocalizedString("AccessKeyPlaceholder"), ViewModel.Name);
         PredefinedCard.Description = string.Format(resourceToolkit.GetLocalizedString("PredefinedModelsDescription"), ViewModel.Name);
 
-        ViewModel.Config ??= new ErnieDrawConfig { Secret = string.Empty };
+        ViewModel.Config ??= new ErnieDrawConfig();
         ViewModel.CheckCurrentConfig();
     }
 

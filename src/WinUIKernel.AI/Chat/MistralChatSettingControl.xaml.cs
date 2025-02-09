@@ -1,40 +1,39 @@
 // Copyright (c) Richasy. All rights reserved.
 // Licensed under the MIT License.
 
-using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls.Primitives;
+using Microsoft.UI.Xaml;
 using Richasy.AgentKernel;
 
-namespace Richasy.WinUIKernel.AI.Draw;
+namespace Richasy.WinUIKernel.AI.Chat;
 
 /// <summary>
-/// 星火绘制设置控件.
+/// 基础聊天设置控件.
 /// </summary>
-public sealed partial class SparkDrawSettingControl : DrawServiceConfigControlBase
+public sealed partial class MistralChatSettingControl : ChatServiceConfigControlBase
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="SparkDrawSettingControl"/> class.
+    /// Initializes a new instance of the <see cref="MistralChatSettingControl"/> class.
     /// </summary>
-    public SparkDrawSettingControl() => InitializeComponent();
+    public MistralChatSettingControl() => InitializeComponent();
 
     /// <inheritdoc/>
     protected override void OnControlLoaded()
     {
-        Logo.Provider = ViewModel.ProviderType.ToString();
         var resourceToolkit = WinUIKernelAIExtensions.ResourceToolkit;
         KeyCard.Description = string.Format(resourceToolkit.GetLocalizedString("AccessKeyDescription"), ViewModel.Name);
         KeyBox.PlaceholderText = string.Format(resourceToolkit.GetLocalizedString("AccessKeyPlaceholder"), ViewModel.Name);
         PredefinedCard.Description = string.Format(resourceToolkit.GetLocalizedString("PredefinedModelsDescription"), ViewModel.Name);
 
-        ViewModel.Config ??= new SparkDrawConfig();
+        ViewModel.Config ??= new MistralChatConfig();
         ViewModel.CheckCurrentConfig();
     }
 
     private void OnKeyBoxLoaded(object sender, RoutedEventArgs e)
     {
         KeyBox.Password = ViewModel.Config?.Key ?? string.Empty;
-        SecretBox.Password = (ViewModel.Config as SparkDrawConfig)?.Secret ?? string.Empty;
-        AppIdBox.Text = (ViewModel.Config as SparkDrawConfig)?.AppId ?? string.Empty;
+        CodestralSwitch.IsOn = ((MistralChatConfig)ViewModel.Config).UseCodestral;
+        CodeKeyBox.Password = ((MistralChatConfig)ViewModel.Config).CodestralKey;
         KeyBox.Focus(FocusState.Programmatic);
     }
 
@@ -47,15 +46,20 @@ public sealed partial class SparkDrawSettingControl : DrawServiceConfigControlBa
     private void OnPredefinedModelsButtonClick(object sender, RoutedEventArgs e)
         => FlyoutBase.ShowAttachedFlyout(sender as FrameworkElement);
 
-    private void OnSecretBoxTextChanged(object sender, RoutedEventArgs e)
+    private void OnCodestralSwitchToggled(object sender, RoutedEventArgs e)
     {
-        ((SparkDrawConfig)ViewModel.Config).Secret = SecretBox.Password;
+        if (!IsLoaded)
+        {
+            return;
+        }
+
+        ((MistralChatConfig)ViewModel.Config).UseCodestral = CodestralSwitch.IsOn;
         ViewModel.CheckCurrentConfig();
     }
 
-    private void OnAppIdBoxTextChanged(object sender, Microsoft.UI.Xaml.Controls.TextChangedEventArgs e)
+    private void OnCodeKeyBoxPasswordChanged(object sender, RoutedEventArgs e)
     {
-        ((SparkDrawConfig)ViewModel.Config).AppId = AppIdBox.Text;
+        ((MistralChatConfig)ViewModel.Config).CodestralKey = CodeKeyBox.Password;
         ViewModel.CheckCurrentConfig();
     }
 }

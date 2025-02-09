@@ -118,171 +118,183 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AccessKey" xml:space="preserve">
-    <value>访问密钥</value>
+    <value>Access key</value>
   </data>
   <data name="AccessKeyDescription" xml:space="preserve">
-    <value>填入来自 {0} 的 API 密钥</value>
+    <value>Fill in the API key from {0}</value>
   </data>
   <data name="AccessKeyPlaceholder" xml:space="preserve">
-    <value>{0} API 密钥</value>
+    <value>{0} API key</value>
   </data>
   <data name="AccessKeyPlaceholderText" xml:space="preserve">
-    <value>访问服务的密钥</value>
+    <value>Key for accessing the service</value>
   </data>
   <data name="AccessKeySecret" xml:space="preserve">
-    <value>访问密文（AccessKey Secret）</value>
+    <value>Access secret</value>
   </data>
   <data name="AddYourCustomModel" xml:space="preserve">
-    <value>添加自定义模型</value>
+    <value>Add a custom model</value>
   </data>
   <data name="AliAccessKeySecretDescription" xml:space="preserve">
-    <value>在阿里云中注册并获取 Secret</value>
+    <value>Register in Alibaba Cloud and get the Secret</value>
   </data>
   <data name="AliTranslateAccessKeyDescription" xml:space="preserve">
-    <value>在阿里云中注册并获取密钥</value>
+    <value>Register in Alibaba Cloud and get the Key</value>
   </data>
   <data name="ApiKey" xml:space="preserve">
-    <value>API 密钥（API Key）</value>
+    <value>API key</value>
   </data>
   <data name="AppId" xml:space="preserve">
-    <value>应用 ID</value>
+    <value>App ID</value>
   </data>
   <data name="AzureOpenAIAccessKeyDescription" xml:space="preserve">
-    <value>在 Azure 门户相应资源的 "密钥与终结点" 中找到此值，可用 KEY1 或 KEY2</value>
+    <value>Find this value in "Keys and Endpoints" of the corresponding resource in the Azure portal. You can use KEY1 or KEY2</value>
   </data>
   <data name="AzureOpenAIEndpointDescription" xml:space="preserve">
-    <value>在 Azure 门户相应资源的 "密钥与终结点" 中找到此值</value>
+    <value>Find this value in "Keys and Endpoints" of the corresponding resource in the Azure portal</value>
   </data>
   <data name="AzureRegionDescription" xml:space="preserve">
-    <value>在 Azure 门户相应资源的 "密钥与终结点" 中找到此值</value>
+    <value>Find this value in "Keys and Endpoints" of the corresponding resource in the Azure portal</value>
   </data>
   <data name="AzureSpeechAccessKeyDescription" xml:space="preserve">
-    <value>在 Azure 门户相应资源的 "密钥与终结点" 中找到此值，可用 KEY1 或 KEY2</value>
+    <value>Find this value in "Keys and Endpoints" of the corresponding resource in the Azure portal. You can use KEY1 or KEY2</value>
   </data>
   <data name="AzureTranslateAccessKeyDescription" xml:space="preserve">
-    <value>在 Azure 门户相应资源的 "密钥与终结点" 中找到此值，可用 KEY1 或 KEY2</value>
+    <value>Find this value in "Keys and Endpoints" of the corresponding resource in the Azure portal. You can use KEY1 or KEY2</value>
   </data>
   <data name="BaiduAppIdDescription" xml:space="preserve">
-    <value>在百度翻译开放平台中注册并获取 App ID</value>
+    <value>Register in Baidu Translate Open Platform and get the App ID</value>
   </data>
   <data name="Cancel" xml:space="preserve">
-    <value>取消</value>
+    <value>Cancel</value>
   </data>
   <data name="ChatModelIdPlaceholder" xml:space="preserve">
-    <value>如 "gpt-4"</value>
+    <value>Such as "gpt-4"</value>
   </data>
   <data name="ChatModelNamePlaceholder" xml:space="preserve">
-    <value>如 "ChatGPT 4"</value>
+    <value>Such as "ChatGPT 4"</value>
+  </data>
+  <data name="CodestralKey" xml:space="preserve">
+    <value>Codestral key</value>
+  </data>
+  <data name="CodestralKeyDescription" xml:space="preserve">
+    <value>Enter a unique key for Codestral</value>
   </data>
   <data name="Confirm" xml:space="preserve">
-    <value>确认</value>
+    <value>Confirm</value>
   </data>
   <data name="Create" xml:space="preserve">
-    <value>创建</value>
+    <value>Create</value>
   </data>
   <data name="CreateCustomModel" xml:space="preserve">
-    <value>创建自定义模型</value>
+    <value>Create custom model</value>
   </data>
   <data name="CustomModel" xml:space="preserve">
-    <value>自定义模型</value>
+    <value>Custom model</value>
   </data>
   <data name="Delete" xml:space="preserve">
-    <value>删除</value>
+    <value>Delete</value>
   </data>
   <data name="Edit" xml:space="preserve">
-    <value>编辑</value>
+    <value>Edit</value>
   </data>
   <data name="Endpoint" xml:space="preserve">
-    <value>终结点</value>
+    <value>Endpoint</value>
   </data>
   <data name="EndpointDescription" xml:space="preserve">
-    <value>必须包含 http(s)://</value>
+    <value>Must include http(s)://</value>
   </data>
   <data name="EndpointPlaceholder" xml:space="preserve">
-    <value>如 https://api.openai.com/v1</value>
+    <value>like https://api.openai.com/v1</value>
   </data>
   <data name="ErnieSecretDescription" xml:space="preserve">
-    <value>从百度千帆大模型平台的 "应用接入" 中获取 Secret Key</value>
+    <value>Get Secret Key from "Application Access" of Baidu Qianfan LLM Platform</value>
   </data>
   <data name="HunyuanSecretIdDescription" xml:space="preserve">
-    <value>在 "API密钥管理" 中获取 SecretId</value>
+    <value>Get SecretId in "API Key Management"</value>
   </data>
   <data name="HunyuanSecretKeyDescription" xml:space="preserve">
-    <value>在 "API密钥管理" 中创建 SecretKey 时获取</value>
+    <value>Get when creating SecretKey in "API Key Management"</value>
   </data>
   <data name="KeyId" xml:space="preserve">
-    <value>密钥 ID</value>
+    <value>Key ID</value>
   </data>
   <data name="ModelAlreadyExist" xml:space="preserve">
-    <value>模型已存在</value>
+    <value>Model already exists</value>
   </data>
   <data name="ModelId" xml:space="preserve">
-    <value>模型 ID</value>
+    <value>Model ID</value>
   </data>
   <data name="ModelIdDescription" xml:space="preserve">
-    <value>模型 ID 是该模型的真实标识名称，AI 服务通过此标识确定模型</value>
+    <value>Model ID is the real identification name of the model, and AI service identifies the model through this identification</value>
   </data>
   <data name="ModelName" xml:space="preserve">
-    <value>模型名称</value>
+    <value>Model name</value>
   </data>
   <data name="ModelNameDescription" xml:space="preserve">
-    <value>模型名称是应用内部显示在界面上的可读名称</value>
+    <value>Model name is the readable name displayed on the UI</value>
   </data>
   <data name="ModelNameOrIdCanNotBeEmpty" xml:space="preserve">
-    <value>模型名称或ID不能为空</value>
+    <value>Model name or ID cannot be empty</value>
   </data>
   <data name="ModifyCustomModel" xml:space="preserve">
-    <value>编辑自定义模型</value>
+    <value>Edit custom model</value>
   </data>
   <data name="MoreOptions" xml:space="preserve">
-    <value>更多选项</value>
+    <value>More options</value>
   </data>
   <data name="OptionalPlaceholder" xml:space="preserve">
-    <value>如果没有则不填</value>
+    <value>If there is no, leave it blank</value>
   </data>
   <data name="OrganizationOptional" xml:space="preserve">
-    <value>组织（可选）</value>
+    <value>Organization (optional)</value>
   </data>
   <data name="PredefinedModels" xml:space="preserve">
-    <value>预定义模型</value>
+    <value>Predefined model</value>
   </data>
   <data name="PredefinedModelsDescription" xml:space="preserve">
-    <value>查看 {0} 的内置模型列表</value>
+    <value>View the list of built-in models of {0}</value>
   </data>
   <data name="Region" xml:space="preserve">
-    <value>位置/区域</value>
+    <value>Location/Region</value>
   </data>
   <data name="RegionPlaceholderText" xml:space="preserve">
-    <value>服务所在地区</value>
+    <value>Service location</value>
   </data>
   <data name="SecretId" xml:space="preserve">
-    <value>密文 ID（Secret ID）</value>
+    <value>Secret ID</value>
   </data>
   <data name="SecretKey" xml:space="preserve">
-    <value>密文密钥（Secret Key）</value>
+    <value>Secret Key</value>
   </data>
   <data name="SeeAllPredefinedModels" xml:space="preserve">
-    <value>查看全部预定义模型</value>
+    <value>View all predefined models</value>
   </data>
   <data name="SparkAppIdDescription" xml:space="preserve">
-    <value>在讯飞开放平台中注册应用并获取 App ID</value>
+    <value>Register the application in iFlytek Open Platform and obtain App ID</value>
   </data>
   <data name="SparkSecretDescription" xml:space="preserve">
-    <value>在讯飞开放平台中注册应用并获取 Secret</value>
+    <value>Register the application in iFlytek Open Platform and obtain Secret</value>
   </data>
   <data name="TencentSecretIdDescription" xml:space="preserve">
-    <value>在 "API密钥管理" 中获取 SecretId</value>
+    <value>Get SecretId in "API Key Management"</value>
   </data>
   <data name="TencentSecretKeyDescription" xml:space="preserve">
-    <value>在 "API密钥管理" 中创建 SecretKey 时获取</value>
+    <value>Get it when creating SecretKey in "API Key Management"</value>
+  </data>
+  <data name="UseCodestral" xml:space="preserve">
+    <value>Use Codestral</value>
+  </data>
+  <data name="UseCodestralDescription" xml:space="preserve">
+    <value>Use Codestral API and its models</value>
   </data>
   <data name="VolcanoKeyIdDescription" xml:space="preserve">
-    <value>在火山引擎的 "API访问密钥" 中获取 Access Key ID</value>
+    <value>Get Access Key ID in "API Access Key" of Volcano Engine</value>
   </data>
   <data name="VolcanoSecretKeyDescription" xml:space="preserve">
-    <value>在火山引擎的 "API访问密钥" 中获取 Secret Access Key</value>
+    <value>Get Secret Access Key in "API Access Key" of Volcano Engine</value>
   </data>
   <data name="YoudaoAppIdDescription" xml:space="preserve">
-    <value>在有道开放平台中注册并获取 App ID</value>
+    <value>Register and get App ID in Youdao Open Platform</value>
   </data>
 </root>

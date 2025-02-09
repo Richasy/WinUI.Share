@@ -13,10 +13,6 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
-    <None Remove="TestPage.xaml" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Content Include="Assets\SplashScreen.scale-200.png" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\Square150x150Logo.scale-200.png" />
@@ -41,15 +37,10 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" />
     <PackageReference Include="Microsoft.WindowsAppSDK" />
+    <PackageReference Include="Richasy.WinUIKernel.AI" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\WinUIKernel.AI\WinUIKernel.AI.csproj" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Update="AzureVoiceList.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="EdgeVoiceList.json">
+    <None Update="C:\Users\zrich\.nuget\packages\richasy.winuikernel.ai\0.0.1-preview1\contentFiles\any\net9.0-windows10.0.22621\Assets\**\*">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

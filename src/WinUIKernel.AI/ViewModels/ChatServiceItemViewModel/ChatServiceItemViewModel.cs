@@ -84,7 +84,6 @@ public partial class ChatServiceItemViewModel : ViewModelBase
                 or ChatProviderType.DeepSeek
                 or ChatProviderType.OpenRouter
                 or ChatProviderType.Groq
-                or ChatProviderType.Mistral
                 or ChatProviderType.TogetherAI
                 or ChatProviderType.Perplexity
                 or ChatProviderType.SiliconFlow
@@ -97,6 +96,7 @@ public partial class ChatServiceItemViewModel : ViewModelBase
                 or ChatProviderType.Ollama
                 or ChatProviderType.AzureAI
                 or ChatProviderType.Gemini => new EndpointChatSettingControl { ViewModel = this },
+            ChatProviderType.Mistral => new MistralChatSettingControl { ViewModel = this },
             ChatProviderType.AzureOpenAI => new AzureOpenAIChatSettingControl { ViewModel = this },
             ChatProviderType.OpenAI => new OpenAIChatSettingControl { ViewModel = this },
             ChatProviderType.Ernie => new ErnieChatSettingControl { ViewModel = this },

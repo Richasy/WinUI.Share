@@ -11,6 +11,8 @@
     <IsAotCompatible>true</IsAotCompatible>
     <Platforms>x64;x86;ARM64</Platforms>
     <NoWarn>$(NoWarn);MVVMTK0045;MVVMTK0046;MSB3030;IL2059</NoWarn>
+	<EnableMsixTooling>true</EnableMsixTooling>
+	<EnablePriGenTooling>true</EnablePriGenTooling>
     <WebView2EnableCsWinRTProjectionExcludeCoreRef>true</WebView2EnableCsWinRTProjectionExcludeCoreRef>
   </PropertyGroup>
   
@@ -36,6 +38,7 @@
     <None Remove="Chat\BasicChatSettingControl.xaml" />
     <None Remove="Chat\EndpointChatSettingControl.xaml" />
     <None Remove="Chat\ErnieChatSettingControl.xaml" />
+    <None Remove="Chat\MistralChatSettingControl.xaml" />
     <None Remove="Chat\OpenAIChatSettingControl.xaml" />
     <None Remove="Chat\OpenAIDrawSettingControl.xaml" />
     <None Remove="CustomChatModelDialog.xaml" />
@@ -57,10 +60,13 @@
   </ItemGroup>
 
   <ItemGroup>
-  	<None Include="Assets\**\*">
-  		<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-  	</None>
+  	<None Include="Assets\**\*" Pack="true" CopyToOutputDirectory="CopyAlways"/>
   </ItemGroup>
+
+  <ItemGroup>
+  	<None Include="bin/$(Configuration)/$(TargetFramework)/$(AssemblyName).pri" Pack="true" PackagePath="lib/$(TargetFramework.TrimEnd('.0'))/" />
+  </ItemGroup>
+	
   <ItemGroup>
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" />
     <PackageReference Include="Microsoft.WindowsAppSDK" />
@@ -93,6 +99,12 @@
   
   <ItemGroup>
     <ProjectReference Include="..\WinUIKernel.Share\WinUIKernel.Share.csproj" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Page Update="Chat\MistralChatSettingControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   
   <ItemGroup>

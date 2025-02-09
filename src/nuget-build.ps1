@@ -18,6 +18,22 @@ if (-not $projectFiles) {
     exit 1
 }
 
+function Get-NugetPackages {
+    param (
+        [string]$path
+    )
+
+    $nugetPackages = Get-ChildItem -Path $path -Recurse -File | Where-Object { $_.Extension -eq ".nupkg" -or $_.Extension -eq ".snupkg" }
+    
+    if ($nugetPackages.Count -eq 0 -and (Get-ChildItem -Path $path -Directory).Count -gt 0) {
+        foreach ($dir in Get-ChildItem -Path $path -Directory) {
+            $nugetPackages += Get-NugetPackages -path $dir.FullName
+        }
+    }
+    
+    return $nugetPackages
+}
+
 foreach ($projectFile in $projectFiles) {
     # 排除 Samples 文件夹和 Libs 文件夹下的 .csproj 文件
     if ($projectFile.FullName -notmatch "\\Samples\\") {
@@ -47,7 +63,8 @@ foreach ($projectFile in $projectFiles) {
         dotnet pack $projectFile.FullName -c Release
 
         # 获取打包后的 NuGet 包文件（包括 .nupkg 和 .snupkg 文件）
-        $nugetPackages = Get-ChildItem -Path "$($projectFile.DirectoryName)\bin\Release" | Where-Object { $_.Extension -eq ".nupkg" -or $_.Extension -eq ".snupkg" }
+        $releasePath = "$($projectFile.DirectoryName)\bin\Release"
+        $nugetPackages = Get-NugetPackages -path $releasePath
 
         if (-not $nugetPackages) {
             Write-Error "未找到任何 NuGet 包文件。"

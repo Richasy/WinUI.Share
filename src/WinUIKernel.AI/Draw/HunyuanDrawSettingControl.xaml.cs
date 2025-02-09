@@ -24,7 +24,7 @@ public sealed partial class HunyuanDrawSettingControl : DrawServiceConfigControl
         var resourceToolkit = WinUIKernelAIExtensions.ResourceToolkit;
         PredefinedCard.Description = string.Format(resourceToolkit.GetLocalizedString("PredefinedModelsDescription"), ViewModel.Name);
 
-        ViewModel.Config ??= new HunyuanDrawConfig { Secret = string.Empty };
+        ViewModel.Config ??= new HunyuanDrawConfig();
         ViewModel.CheckCurrentConfig();
     }
 

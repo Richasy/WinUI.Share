@@ -11,6 +11,7 @@
     <IsAotCompatible>true</IsAotCompatible>
     <Platforms>x64;x86;ARM64</Platforms>
     <NoWarn>$(NoWarn);MVVMTK0045;MSB3030;IL2059</NoWarn>
+	<EnableMsixTooling>true</EnableMsixTooling>
     <WebView2EnableCsWinRTProjectionExcludeCoreRef>true</WebView2EnableCsWinRTProjectionExcludeCoreRef>
   </PropertyGroup>
 
@@ -21,6 +22,10 @@
   	<Title>WinUI Kernel - Share</Title>
   	<Description>多项目共享的基础 WinUI 实现</Description>
   </PropertyGroup>
+
+  <ItemGroup>
+  	<None Include="bin/$(Configuration)/$(TargetFramework)/$(AssemblyName).pri" Pack="true" PackagePath="lib/$(TargetFramework.TrimEnd('.0'))/" />
+  </ItemGroup>
 	
   <ItemGroup>
     <None Remove="Base\AppTitleBar.xaml" />
