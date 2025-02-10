@@ -12,19 +12,19 @@ namespace Richasy.WinUIKernel.AI.ViewModels;
 public sealed partial class TranslateServiceItemViewModel
 {
     [ObservableProperty]
-    private string _name;
+    public partial string Name { get; set; }
 
     [ObservableProperty]
-    private TranslateProviderType _providerType;
+    public partial TranslateProviderType ProviderType { get; set; }
 
     [ObservableProperty]
-    private bool _isCompleted;
+    public partial bool IsCompleted { get; set; }
 
     [ObservableProperty]
-    private TranslateClientConfigBase? _config;
+    public partial TranslateClientConfigBase? Config { get; set; }
 
     [ObservableProperty]
-    private bool _isSelected;
+    public partial bool IsSelected { get; set; }
 
     /// <inheritdoc/>
     public override bool Equals(object? obj) => obj is TranslateServiceItemViewModel model && ProviderType == model.ProviderType;

@@ -6,24 +6,26 @@ using CommunityToolkit.Mvvm.Input;
 using Microsoft.UI.Xaml.Controls;
 using Richasy.AgentKernel.Models;
 using Richasy.WinUIKernel.Share.ViewModels;
+using WinRT;
 
 namespace Richasy.WinUIKernel.AI.ViewModels;
 
 /// <summary>
 /// 聊天模型项视图模型.
 /// </summary>
+[GeneratedBindableCustomProperty]
 public sealed partial class ChatModelItemViewModel : ViewModelBase<ChatModel>
 {
     private readonly Action<ChatModelItemViewModel>? _deleteAction;
 
     [ObservableProperty]
-    private string _name;
+    public partial string? Name { get; set; }
 
     [ObservableProperty]
-    private string _id;
+    public partial string? Id { get; set; }
 
     [ObservableProperty]
-    private bool _isSelected;
+    public partial bool IsSelected { get; set; }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="ChatModelItemViewModel"/> class.
@@ -52,7 +54,7 @@ public sealed partial class ChatModelItemViewModel : ViewModelBase<ChatModel>
     private void Delete()
         => _deleteAction?.Invoke(this);
 
-    partial void OnNameChanged(string value)
+    partial void OnNameChanged(string? value)
     {
         if (Data.Name != value)
         {
@@ -60,7 +62,7 @@ public sealed partial class ChatModelItemViewModel : ViewModelBase<ChatModel>
         }
     }
 
-    partial void OnIdChanged(string value)
+    partial void OnIdChanged(string? value)
     {
         if (Data.Id != value)
         {

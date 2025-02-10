@@ -13,22 +13,22 @@ namespace Richasy.WinUIKernel.AI.ViewModels;
 public sealed partial class DrawServiceItemViewModel
 {
     [ObservableProperty]
-    private string _name;
+    public partial string Name { get; set; }
 
     [ObservableProperty]
-    private DrawProviderType _providerType;
+    public partial DrawProviderType ProviderType { get; set; }
 
     [ObservableProperty]
-    private bool _isCompleted;
+    public partial bool IsCompleted { get; set; }
 
     [ObservableProperty]
-    private DrawClientConfigBase? _config;
+    public partial DrawClientConfigBase? Config { get; set; }
 
     [ObservableProperty]
-    private bool _isServerModelVisible;
+    public partial bool IsServerModelVisible { get; set; }
 
     [ObservableProperty]
-    private bool _isSelected;
+    public partial bool IsSelected { get; set; }
 
     /// <summary>
     /// 服务模型.

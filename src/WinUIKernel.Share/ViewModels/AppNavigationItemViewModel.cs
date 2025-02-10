@@ -14,22 +14,22 @@ public sealed partial class AppNavigationItemViewModel : ViewModelBase
     private readonly Action<object?> _navigateAction;
 
     [ObservableProperty]
-    private bool _showUnread;
+    public partial bool ShowUnread { get; set; }
 
     [ObservableProperty]
-    private FluentIcons.Common.Symbol _symbol;
+    public partial FluentIcons.Common.Symbol Symbol { get; set; }
 
     [ObservableProperty]
-    private bool _isSelected;
+    public partial bool IsSelected { get; set; }
 
     [ObservableProperty]
-    private string _title;
+    public partial string Title { get; set; }
 
     [ObservableProperty]
-    private string _accessKey;
+    public partial string AccessKey { get; set; }
 
     [ObservableProperty]
-    private bool _isVisible;
+    public partial bool IsVisible { get; set; }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="AppNavigationItemViewModel"/> class.
@@ -49,7 +49,7 @@ public sealed partial class AppNavigationItemViewModel : ViewModelBase
         IsSelected = isSelected;
         AccessKey = accessKey;
         _navigateAction = parameter => navService.NavigateTo(pageType, parameter);
-        _isVisible = isVisible;
+        IsVisible = isVisible;
     }
 
     /// <summary>

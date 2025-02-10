@@ -7,6 +7,7 @@ using Richasy.WinUIKernel.AI;
 using Richasy.WinUIKernel.Share;
 using Richasy.WinUIKernel.Share.Toolkits;
 using RichasyKernel;
+using System.Diagnostics.CodeAnalysis;
 
 namespace AISample;
 
@@ -83,7 +84,7 @@ internal static class GlobalDependencies
 
     public static T Get<T>(this object ele) where T : class => Kernel.GetRequiredService<T>();
 
-    private static IKernelBuilder AddSingleton<TInterface, TImplementation>(this IKernelBuilder builder)
+    private static IKernelBuilder AddSingleton<TInterface, [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicConstructors)] TImplementation>(this IKernelBuilder builder)
         where TInterface : class
         where TImplementation : class, TInterface
     {
@@ -91,7 +92,7 @@ internal static class GlobalDependencies
         return builder;
     }
 
-    private static IKernelBuilder AddSingleton<T>(this IKernelBuilder builder)
+    private static IKernelBuilder AddSingleton<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicConstructors)] T>(this IKernelBuilder builder)
         where T : class
     {
         builder.Services.AddSingleton<T>();

@@ -20,7 +20,7 @@ public abstract partial class ViewModelBase<TData> : ViewModelBase
     where TData : class
 {
     [ObservableProperty]
-    private TData _data;
+    public partial TData Data { get; set; }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="ViewModelBase{TData}"/> class.

@@ -4,22 +4,24 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using Richasy.AgentKernel.Models;
 using Richasy.WinUIKernel.Share.ViewModels;
+using WinRT;
 
 namespace Richasy.WinUIKernel.AI.ViewModels;
 
 /// <summary>
 /// 绘图模型项视图模型.
 /// </summary>
+[GeneratedBindableCustomProperty]
 public sealed partial class DrawModelItemViewModel : ViewModelBase<DrawModel>
 {
     [ObservableProperty]
-    private string _name;
+    public partial string? Name { get; set; }
 
     [ObservableProperty]
-    private string _id;
+    public partial string? Id { get; set; }
 
     [ObservableProperty]
-    private bool _isSelected;
+    public partial bool IsSelected { get; set; }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="DrawModelItemViewModel"/> class.
